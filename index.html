@@ -4,145 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>[MAG] Price List by Scream — DayZ PVE</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Share Tech Mono',monospace;color:#d4c89a;min-height:100vh;overflow-x:hidden;background:#0a1a08}
-#bg{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0a1a08 0%,#0d2010 30%,#071510 60%,#0a1a08 100%);z-index:0}
-#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.wrapper{position:relative;z-index:2;padding:0 0 40px}
-.scanline{position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);z-index:3;pointer-events:none}
-.vignette{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.7) 100%);z-index:3;pointer-events:none}
-
-header{text-align:center;padding:28px 20px 18px;background:linear-gradient(180deg,rgba(0,0,0,0.85) 0%,transparent 100%)}
-.mag-logo{font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;color:#fff;text-shadow:0 0 20px rgba(200,30,30,0.6);letter-spacing:4px}
-.mag-logo span{color:#cc2200}
-.subtitle{font-size:10px;color:#7a9e6a;letter-spacing:3px;margin-top:4px;text-transform:uppercase}
-.server-badge{display:inline-block;margin-top:8px;padding:3px 14px;border:1px solid #3a5a2a;background:rgba(20,50,10,0.6);font-size:10px;color:#6aaa4a;letter-spacing:2px;border-radius:2px}
-
-.controls{display:flex;gap:8px;padding:10px 16px;flex-wrap:wrap;align-items:center;background:rgba(0,0,0,0.55);border-bottom:1px solid #2a4020;position:sticky;top:0;z-index:10}
-.search-box{flex:1;min-width:160px;background:rgba(10,30,5,0.9);border:1px solid #3a5a2a;color:#a0c880;padding:7px 10px;font-family:'Share Tech Mono',monospace;font-size:12px;outline:none;border-radius:2px}
-.search-box::placeholder{color:#4a6a3a}
-.search-box:focus{border-color:#6aaa4a;box-shadow:0 0 8px rgba(100,170,70,0.15)}
-.filter-btn{padding:6px 11px;background:rgba(10,30,5,0.8);border:1px solid #3a5a2a;color:#7a9a5a;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:2px;transition:all .2s;letter-spacing:1px}
-.filter-btn:hover,.filter-btn.active{background:rgba(80,140,40,0.25);border-color:#6aaa4a;color:#a0d070}
-.admin-btn{padding:6px 13px;background:rgba(180,100,0,0.3);border:1px solid #8a5020;color:#d4882a;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:2px;transition:all .2s;letter-spacing:1px;margin-left:auto}
-.admin-btn:hover{background:rgba(180,100,0,0.5)}
-.admin-btn.active{background:rgba(180,100,0,0.6);border-color:#cc7010;color:#ffaa44}
-
-.admin-panel{background:rgba(5,15,3,0.98);border-bottom:2px solid #8a5020;padding:16px;display:none}
+body{background:#0d1a0a;font-family:'Share Tech Mono',monospace;color:#c8d8a8;min-height:100vh}
+#bgcanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.app{position:relative;z-index:1}
+header{background:rgba(0,0,0,0.75);border-bottom:2px solid #2a4a1a;padding:18px 24px 14px;text-align:center}
+.logo{font-family:'Oswald',sans-serif;font-size:46px;font-weight:700;letter-spacing:6px;color:#fff;text-shadow:3px 3px 0 #1a3a0a,5px 5px 0 #0d2006,-1px -1px 0 #4a8a2a}
+.logo em{color:#cc2200;font-style:normal;text-shadow:3px 3px 0 #660a00,5px 5px 0 #330500}
+.tagline{font-size:10px;letter-spacing:4px;color:#5a8a3a;margin-top:2px;text-transform:uppercase}
+.topbar{display:flex;gap:8px;padding:10px 16px;background:rgba(0,0,0,0.6);border-bottom:1px solid #1e3a10;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.search-wrap{position:relative;flex:1;min-width:180px}
+.search-wrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#3a6a20;font-size:15px;pointer-events:none}
+.search{width:100%;background:rgba(10,25,5,0.9);border:1px solid #2a4a1a;color:#a0cc70;padding:8px 12px 8px 34px;font-family:'Share Tech Mono',monospace;font-size:12px;outline:none;border-radius:3px}
+.search:focus{border-color:#4a8a2a}
+.fbtn{padding:6px 13px;background:rgba(8,20,4,0.8);border:1px solid #2a4a1a;color:#6a9a4a;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .18s;letter-spacing:1px;white-space:nowrap}
+.fbtn:hover,.fbtn.on{background:rgba(50,100,20,0.35);border-color:#5a9a2a;color:#9acc60}
+.abtn{padding:6px 13px;background:rgba(140,80,0,0.3);border:1px solid #7a4a10;color:#cc8020;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .18s;letter-spacing:1px;margin-left:auto}
+.abtn:hover,.abtn.on{background:rgba(160,90,0,0.55);border-color:#bb6010;color:#ffaa40}
+.admin-panel{background:rgba(4,12,2,0.97);border-bottom:2px solid #7a4a10;padding:14px 16px;display:none}
 .admin-panel.open{display:block}
-.admin-title{font-family:'Oswald',sans-serif;font-size:13px;color:#d4882a;letter-spacing:3px;margin-bottom:14px;text-transform:uppercase}
-.admin-grid{display:grid;grid-template-columns:80px 1fr 1fr 110px 140px 140px auto;gap:8px;align-items:end}
-.admin-input{background:rgba(20,40,10,0.9);border:1px solid #3a5020;color:#c0d8a0;padding:7px 9px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;border-radius:2px;width:100%}
-.admin-input:focus{border-color:#8a7020;box-shadow:0 0 6px rgba(140,110,20,0.2)}
-.admin-select{background:rgba(20,40,10,0.9);border:1px solid #3a5020;color:#c0d8a0;padding:7px 9px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;border-radius:2px;width:100%}
-.admin-label{font-size:10px;color:#6a8a4a;margin-bottom:3px;letter-spacing:1px;display:block}
-.btn-add{padding:7px 16px;background:rgba(40,120,20,0.4);border:1px solid #3a8a1a;color:#80dd40;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:2px;white-space:nowrap;letter-spacing:1px;transition:all .2s;height:34px}
-.btn-add:hover{background:rgba(40,120,20,0.7);border-color:#60cc20}
-.admin-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.btn-secondary{padding:7px 14px;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:2px;white-space:nowrap;letter-spacing:1px;transition:all .2s}
-.btn-export{background:rgba(20,60,120,0.4);border:1px solid #1a4a8a;color:#60aadd}
-.btn-export:hover{background:rgba(20,60,120,0.7)}
-.btn-import{background:rgba(60,40,120,0.4);border:1px solid #4a2a8a;color:#aa80dd}
-.btn-import:hover{background:rgba(60,40,120,0.7)}
-.btn-reset{background:rgba(120,20,20,0.4);border:1px solid #8a1a1a;color:#dd6060}
-.btn-reset:hover{background:rgba(120,20,20,0.7)}
-
-.stats-bar{display:flex;gap:16px;padding:7px 16px;background:rgba(0,0,0,0.35);border-bottom:1px solid #1a3010;font-size:10px;color:#5a7a4a;letter-spacing:1px;flex-wrap:wrap}
-.stat-val{color:#8acc60}
-
-.legend{display:flex;gap:14px;padding:5px 16px;background:rgba(0,0,0,0.2);font-size:10px;color:#4a6a3a;letter-spacing:1px;flex-wrap:wrap;align-items:center}
-.legend-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:3px}
-
-.category-header{padding:8px 16px;background:rgba(0,0,0,0.45);border-bottom:1px solid #1a3010;border-top:1px solid #1a3010;display:flex;align-items:center;gap:8px;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:3px;color:#6aaa4a;text-transform:uppercase;margin-top:1px}
-.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:#1a3010}
-.price-row{background:rgba(5,15,3,0.9);padding:9px 14px;display:flex;align-items:center;gap:8px;transition:all .15s;border-left:2px solid transparent;position:relative}
-.price-row:hover{background:rgba(20,50,10,0.95);border-left-color:#4a8a2a}
-.price-row.rare{border-left-color:#8a4aaa}.price-row.rare:hover{background:rgba(30,10,50,0.95);border-left-color:#aa6acc}
-.price-row.uncommon{border-left-color:#3a6aaa}.price-row.uncommon:hover{background:rgba(5,15,40,0.95);border-left-color:#5a9acc}
-.item-emoji{font-size:18px;width:24px;text-align:center;flex-shrink:0}
-.item-info{flex:1;min-width:0}
-.item-name{font-size:12px;color:#c0d8a0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item-sub{font-size:10px;color:#4a6a3a;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item-price{text-align:right;flex-shrink:0}
-.price-val{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;color:#88cc44}
-.price-val.rare-price{color:#bb88ee}
-.price-val.uncommon-price{color:#6699cc}
-.price-unit{font-size:9px;color:#4a6a3a;display:block}
-.rarity-dot{width:5px;height:5px;border-radius:50%;background:#3a5a2a;flex-shrink:0}
-.price-row.rare .rarity-dot{background:#7a3aaa}
-.price-row.uncommon .rarity-dot{background:#3a6aaa}
-.btn-del{background:none;border:none;color:#4a2a2a;cursor:pointer;font-size:13px;padding:2px 5px;border-radius:2px;transition:all .2s;flex-shrink:0;opacity:0}
-.price-row:hover .btn-del{opacity:1;color:#dd4444}
-.btn-del:hover{background:rgba(120,20,20,0.35)}
-.no-results{padding:50px;text-align:center;color:#3a5a2a;font-size:13px;letter-spacing:3px}
-
-.toast{position:fixed;bottom:24px;right:24px;background:rgba(10,30,5,0.97);border:1px solid #4a8a2a;color:#80dd40;padding:9px 18px;font-family:'Share Tech Mono',monospace;font-size:11px;border-radius:2px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;letter-spacing:1px}
-.toast.err{border-color:#8a1a1a;color:#dd6060}
+.apanel-title{font-family:'Oswald',sans-serif;font-size:12px;color:#cc8020;letter-spacing:3px;margin-bottom:12px}
+.aform{display:grid;grid-template-columns:70px 1fr 1fr 110px 150px 150px 44px;gap:7px;align-items:end}
+.ainput{width:100%;background:rgba(15,35,8,0.95);border:1px solid #2a4a14;color:#b0cc80;padding:7px 8px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;border-radius:3px}
+.ainput:focus{border-color:#6a9a30}
+.alabel{font-size:10px;color:#4a7a28;margin-bottom:3px;letter-spacing:1px;display:block}
+.aadd{width:44px;height:34px;background:rgba(30,100,10,0.5);border:1px solid #2a8a10;color:#70dd30;font-size:18px;cursor:pointer;border-radius:3px;transition:all .18s;display:flex;align-items:center;justify-content:center}
+.aadd:hover{background:rgba(40,130,15,0.7)}
+.aactions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.asec{padding:6px 13px;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;letter-spacing:1px;transition:all .18s}
+.aexp{background:rgba(15,50,110,0.4);border:1px solid #154a8a;color:#5090cc}.aexp:hover{background:rgba(15,50,110,0.7)}
+.aimp{background:rgba(50,15,110,0.4);border:1px solid #4a158a;color:#9060cc}.aimp:hover{background:rgba(50,15,110,0.7)}
+.arst{background:rgba(110,15,15,0.4);border:1px solid #8a1515;color:#cc5050}.arst:hover{background:rgba(110,15,15,0.7)}
+.statsrow{display:flex;gap:0;background:rgba(0,0,0,0.45);border-bottom:1px solid #162e0a}
+.stat{flex:1;padding:7px 14px;border-right:1px solid #162e0a;font-size:10px;color:#3a6020;letter-spacing:1px}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;color:#7acc40;letter-spacing:1px;text-shadow:1px 1px 0 #1a4008,2px 2px 0 #0d2004}
+.legend{display:flex;gap:16px;padding:6px 16px;background:rgba(0,0,0,0.3);border-bottom:1px solid #122608;font-size:10px;color:#3a6020;letter-spacing:1px;align-items:center;flex-wrap:wrap}
+.ldot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle}
+.cat-block{margin-top:2px}
+.cat-head{display:flex;align-items:center;gap:10px;padding:9px 16px;background:rgba(0,0,0,0.5);border-top:1px solid #162e0a;border-bottom:1px solid #162e0a;cursor:pointer;user-select:none}
+.cat-head:hover{background:rgba(10,30,5,0.7)}
+.cat-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:3px;color:#5a9a30;text-transform:uppercase;flex:1}
+.cat-count{font-size:10px;color:#2a4a18;background:rgba(30,70,10,0.4);padding:2px 8px;border-radius:10px;border:1px solid #1e3a0e}
+.cat-chevron{font-size:14px;color:#2a4a18;transition:transform .2s}
+.cat-chevron.open{transform:rotate(180deg)}
+.shop-table{width:100%;border-collapse:collapse;background:rgba(3,10,2,0.85);table-layout:fixed}
+.shop-table thead tr{background:rgba(0,0,0,0.6);border-bottom:1px solid #1a3a0a}
+.shop-table thead th{padding:8px 14px;font-size:10px;color:#3a6020;letter-spacing:2px;text-transform:uppercase;font-weight:400;text-align:left}
+.shop-table thead th.price-col{text-align:right}
+.shop-table tbody tr{border-bottom:1px solid #0e2008;transition:background .12s}
+.shop-table tbody tr:hover{background:rgba(20,55,8,0.6)}
+.shop-table td{padding:10px 14px;font-size:12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis}
+.td-icon{width:40px;text-align:center;font-size:20px}
+.td-name{font-family:'Oswald',sans-serif;font-size:14px;font-weight:500;color:#d0e8a8;letter-spacing:1px;text-shadow:1px 1px 0 #1a3a08,2px 2px 0 #0a1e04}
+.td-desc{font-size:10px;color:#3a6020;margin-top:1px}
+.td-rar{width:110px}
+.rar-badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.rar-common{background:rgba(20,55,10,0.6);border:1px solid #2a5a14;color:#5a9a30}
+.rar-uncommon{background:rgba(10,30,80,0.5);border:1px solid #1a3a8a;color:#5080cc}
+.rar-rare{background:rgba(60,10,90,0.5);border:1px solid #6a1a9a;color:#aa60dd}
+.td-price{text-align:right;width:120px;white-space:nowrap}
+.price-num{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;color:#88dd44;letter-spacing:1px;text-shadow:1px 1px 0 #1a4008,2px 2px 0 #0d2004}
+.price-num.p-rare{color:#cc88ff;text-shadow:1px 1px 0 #2a0840,2px 2px 0 #150420}
+.price-num.p-uncommon{color:#66aaee;text-shadow:1px 1px 0 #082040,2px 2px 0 #041020}
+.td-del{width:36px;text-align:center}
+.delbtn{background:none;border:none;color:#1e3a10;cursor:pointer;font-size:14px;padding:3px 6px;border-radius:2px;transition:all .18s;opacity:0}
+tr:hover .delbtn{opacity:1;color:#cc4040}
+.delbtn:hover{background:rgba(100,15,15,0.3)}
+.no-res{padding:50px;text-align:center;color:#2a4a18;font-size:13px;letter-spacing:3px}
+.toast{position:fixed;bottom:20px;right:20px;z-index:999;padding:9px 18px;font-family:'Share Tech Mono',monospace;font-size:11px;border-radius:3px;letter-spacing:1px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.ok{background:rgba(8,25,4,0.97);border:1px solid #3a7a18;color:#70cc30}
+.toast.err{background:rgba(25,4,4,0.97);border:1px solid #7a1818;color:#cc5050}
 .toast.show{opacity:1}
-
-footer{text-align:center;padding:18px;font-size:10px;color:#2a4020;letter-spacing:2px;margin-top:8px}
-
-#importFile{display:none}
-
+footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacing:2px;border-top:1px solid #122608;margin-top:8px}
+#imp{display:none}
 @media(max-width:700px){
-  .admin-grid{grid-template-columns:1fr 1fr;}.mag-logo{font-size:32px}
-  .controls{gap:5px}.filter-btn{font-size:10px;padding:5px 8px}
+  .aform{grid-template-columns:1fr 1fr}
+  .mag-logo{font-size:30px}
+  .statsrow{flex-wrap:wrap}
+  .stat{min-width:50%}
+  .shop-table thead th.hide-mobile,.shop-table td.hide-mobile{display:none}
 }
 </style>
 </head>
 <body>
-
-<div id="bg"></div>
-<canvas id="particles"></canvas>
-<div class="scanline"></div>
-<div class="vignette"></div>
-<div class="toast" id="toast"></div>
-<input type="file" id="importFile" accept=".json" onchange="importJSON(event)">
-
-<div class="wrapper">
+<div id="bgcanvas"><canvas id="pc"></canvas></div>
+<div class="app">
 
 <header>
-  <div class="mag-logo">[<span>MAG</span>]</div>
-  <div class="subtitle">Price List — Serveur modifié · <span style="color:#cc2200">by Scream</span></div>
-  <div class="server-badge">⚡ DAYZ PVE ONLY · CHERNARUS SUMMER · BATTLEMETRICS #1</div>
+  <div class="logo">[<em>MAG</em>]</div>
+  <div class="tagline">Price List · by Scream · DayZ PVE Only Community</div>
 </header>
 
-<div class="controls">
-  <input type="text" class="search-box" id="searchInput" placeholder="🔍 Rechercher un item..." oninput="render()">
-  <button class="filter-btn active" onclick="setFilter('all',this)">Tout</button>
-  <button class="filter-btn" onclick="setFilter('armes',this)">⚔ Armes</button>
-  <button class="filter-btn" onclick="setFilter('nourriture',this)">🍖 Nourr.</button>
-  <button class="filter-btn" onclick="setFilter('medical',this)">💊 Médical</button>
-  <button class="filter-btn" onclick="setFilter('vetements',this)">🎒 Équip.</button>
-  <button class="filter-btn" onclick="setFilter('vehicules',this)">🚗 Véhic.</button>
-  <button class="filter-btn" onclick="setFilter('ressources',this)">⚙ Ressources</button>
-  <button class="admin-btn" id="adminToggle" onclick="toggleAdmin()">⚙ ADMIN</button>
+<div class="topbar">
+  <div class="search-wrap">
+    <i class="ti ti-search" aria-hidden="true"></i>
+    <input class="search" id="srch" placeholder="Rechercher un item..." oninput="render()">
+  </div>
+  <button class="fbtn on" onclick="setF('all',this)">Tout</button>
+  <button class="fbtn" onclick="setF('armes',this)">⚔ Armes</button>
+  <button class="fbtn" onclick="setF('nourriture',this)">🍖 Nourr.</button>
+  <button class="fbtn" onclick="setF('medical',this)">💊 Médical</button>
+  <button class="fbtn" onclick="setF('vetements',this)">🎒 Équip.</button>
+  <button class="fbtn" onclick="setF('vehicules',this)">🚗 Véhic.</button>
+  <button class="fbtn" onclick="setF('ressources',this)">⚙ Ressources</button>
+  <button class="abtn" id="atgl" onclick="toggleA()"><i class="ti ti-settings" aria-hidden="true"></i> ADMIN</button>
 </div>
 
-<div class="admin-panel" id="adminPanel">
-  <div class="admin-title">// Panneau d'administration</div>
-  <div class="admin-grid">
-    <div>
-      <label class="admin-label">EMOJI</label>
-      <input class="admin-input" id="f-icon" placeholder="🔫">
-    </div>
-    <div>
-      <label class="admin-label">NOM DE L'ITEM *</label>
-      <input class="admin-input" id="f-name" placeholder="AKM, Kit médical..." onkeydown="if(event.key==='Enter')addItem()">
-    </div>
-    <div>
-      <label class="admin-label">DESCRIPTION</label>
-      <input class="admin-input" id="f-sub" placeholder="Courte description">
-    </div>
-    <div>
-      <label class="admin-label">PRIX (RUB) *</label>
-      <input class="admin-input" id="f-price" type="number" placeholder="1500" min="0" onkeydown="if(event.key==='Enter')addItem()">
-    </div>
-    <div>
-      <label class="admin-label">CATÉGORIE</label>
-      <select class="admin-select" id="f-cat">
+<div class="admin-panel" id="apanel">
+  <div class="apanel-title">// AJOUTER UN ITEM</div>
+  <div class="aform">
+    <div><label class="alabel">EMOJI</label><input class="ainput" id="fi" placeholder="🔫"></div>
+    <div><label class="alabel">NOM *</label><input class="ainput" id="fn" placeholder="AKM..." onkeydown="if(event.key==='Enter')addItem()"></div>
+    <div><label class="alabel">DESCRIPTION</label><input class="ainput" id="fd" placeholder="Description courte"></div>
+    <div><label class="alabel">PRIX (€) *</label><input class="ainput" id="fp" type="number" min="0" step="0.01" placeholder="15.00" onkeydown="if(event.key==='Enter')addItem()"></div>
+    <div><label class="alabel">CATÉGORIE</label>
+      <select class="ainput" id="fc">
         <option value="armes">⚔ Armes</option>
         <option value="nourriture">🍖 Nourriture</option>
         <option value="medical">💊 Médical</option>
@@ -151,240 +131,188 @@ footer{text-align:center;padding:18px;font-size:10px;color:#2a4020;letter-spacin
         <option value="ressources">⚙ Ressources</option>
       </select>
     </div>
-    <div>
-      <label class="admin-label">RARETÉ</label>
-      <select class="admin-select" id="f-rarity">
-        <option value="common">● Commun</option>
-        <option value="uncommon">● Peu commun</option>
-        <option value="rare">● Rare</option>
+    <div><label class="alabel">RARETÉ</label>
+      <select class="ainput" id="fr">
+        <option value="common">Commun</option>
+        <option value="uncommon">Peu commun</option>
+        <option value="rare">Rare</option>
       </select>
     </div>
-    <div>
-      <button class="btn-add" onclick="addItem()">+ AJOUTER</button>
+    <div style="display:flex;align-items:flex-end">
+      <button class="aadd" onclick="addItem()" title="Ajouter"><i class="ti ti-plus" aria-hidden="true"></i></button>
     </div>
   </div>
-  <div class="admin-actions">
-    <button class="btn-secondary btn-export" onclick="exportJSON()">💾 Exporter JSON</button>
-    <button class="btn-secondary btn-import" onclick="document.getElementById('importFile').click()">📂 Importer JSON</button>
-    <button class="btn-secondary btn-reset" onclick="resetData()">🗑 Réinitialiser</button>
+  <div class="aactions">
+    <button class="asec aexp" onclick="exportJ()"><i class="ti ti-download" aria-hidden="true"></i> Exporter JSON</button>
+    <button class="asec aimp" onclick="document.getElementById('imp').click()"><i class="ti ti-upload" aria-hidden="true"></i> Importer JSON</button>
+    <button class="asec arst" onclick="resetD()"><i class="ti ti-trash" aria-hidden="true"></i> Réinitialiser</button>
   </div>
 </div>
 
-<div class="stats-bar">
-  <span>ITEMS AFFICHÉS: <span class="stat-val" id="stat-items">0</span></span>
-  <span>TOTAL: <span class="stat-val" id="stat-total">0 RUB</span></span>
-  <span>DERNIÈRE MAJ: <span class="stat-val" id="stat-date">—</span></span>
-  <span style="margin-left:auto">SERVER: <span class="stat-val">MAG #1</span></span>
+<div class="statsrow">
+  <div class="stat"><b id="s-items">0</b>items affichés</div>
+  <div class="stat"><b id="s-cats">0</b>catégories</div>
+  <div class="stat"><b id="s-min">—</b>prix mini</div>
+  <div class="stat"><b id="s-max">—</b>prix maxi</div>
+  <div class="stat"><b id="s-date">—</b>dernière maj</div>
 </div>
 
 <div class="legend">
-  <span><span class="legend-dot" style="background:#3a5a2a"></span>Commun</span>
-  <span><span class="legend-dot" style="background:#3a6aaa"></span>Peu commun</span>
-  <span><span class="legend-dot" style="background:#7a3aaa"></span>Rare</span>
-  <span style="margin-left:auto;font-size:9px;color:#2a4020">// ADMIN → survole un item pour le supprimer</span>
+  <span><span class="ldot" style="background:#3a6020"></span>Commun</span>
+  <span><span class="ldot" style="background:#1a3a8a"></span>Peu commun</span>
+  <span><span class="ldot" style="background:#6a1a9a"></span>Rare</span>
+  <span style="margin-left:auto;font-size:9px;color:#1e3a10">// Survole un item → supprimer &nbsp;·&nbsp; Clic catégorie → replier</span>
 </div>
 
 <div id="content"></div>
-<footer>[ MAG ] · NO 1 DAYZ PVE ONLY COMMUNITY · BATTLEMETRICS 2023 &amp; 2024 · <span style="color:#6aaa4a">by Scream</span><br><span style="color:#1a2810;font-size:9px">// Ouvre ce fichier dans ton navigateur — aucune connexion internet requise</span></footer>
+<input type="file" id="imp" accept=".json" onchange="importJ(event)">
+<footer>[ MAG ] · NO 1 DAYZ PVE ONLY COMMUNITY · BATTLEMETRICS 2023 &amp; 2024 · by Scream</footer>
 </div>
 
-<script>
-const CAT_LABELS={armes:'⚔ Armes',nourriture:'🍖 Nourriture',medical:'💊 Médical',vetements:'🎒 Équipement',vehicules:'🚗 Véhicules',ressources:'⚙ Ressources'};
-const STORAGE_KEY='mag_dayz_items';
-let currentFilter='all', adminOpen=false, nextId=200;
+<div class="toast" id="toast"></div>
 
-const DEFAULT_ITEMS=[
-  {id:1,cat:'armes',icon:'🔫',name:'AKM',sub:'Fusil d\'assaut 7.62mm',price:4500,rarity:'uncommon'},
-  {id:2,cat:'armes',icon:'🔫',name:'M4A1',sub:'Fusil d\'assaut 5.56mm',price:6200,rarity:'uncommon'},
-  {id:3,cat:'armes',icon:'🎯',name:'SVD Dragunov',sub:'Fusil de précision 7.62mm',price:12000,rarity:'rare'},
-  {id:4,cat:'armes',icon:'💥',name:'FNX45',sub:'Pistolet .45 ACP',price:2200,rarity:'common'},
-  {id:5,cat:'armes',icon:'💣',name:'Grenade M67',sub:'Grenade à fragmentation',price:2800,rarity:'uncommon'},
-  {id:6,cat:'armes',icon:'🏹',name:'Arbalète',sub:'Silencieuse & redoutable',price:1800,rarity:'common'},
-  {id:7,cat:'armes',icon:'⚡',name:'MP5K',sub:'Pistolet mitrailleur 9mm',price:5400,rarity:'uncommon'},
-  {id:8,cat:'nourriture',icon:'🥫',name:'Conserve de haricots',sub:'Nourriture en boîte',price:80,rarity:'common'},
-  {id:9,cat:'nourriture',icon:'🥩',name:'Steak de cerf',sub:'Viande cuite',price:120,rarity:'common'},
-  {id:10,cat:'nourriture',icon:'💧',name:'Bouteille d\'eau 1L',sub:'Eau potable',price:60,rarity:'common'},
-  {id:11,cat:'nourriture',icon:'🍺',name:'Soda',sub:'Boisson sucrée',price:50,rarity:'common'},
-  {id:12,cat:'medical',icon:'💉',name:'EpiPen',sub:'Choc anaphylactique',price:3500,rarity:'rare'},
-  {id:13,cat:'medical',icon:'🩹',name:'Kit de suture',sub:'Referme les coupures',price:800,rarity:'uncommon'},
-  {id:14,cat:'medical',icon:'💊',name:'Tétracycline',sub:'Antibiotique',price:1200,rarity:'uncommon'},
-  {id:15,cat:'medical',icon:'🩺',name:'Défibrillateur',sub:'Réanimation cardiaque',price:8500,rarity:'rare'},
-  {id:16,cat:'medical',icon:'🩹',name:'Bandage',sub:'Arrête les saignements',price:150,rarity:'common'},
-  {id:17,cat:'medical',icon:'💊',name:'Morphine',sub:'Contre la douleur',price:2800,rarity:'uncommon'},
-  {id:18,cat:'vetements',icon:'🎒',name:'Sac ALICE 65L',sub:'Sac à dos militaire',price:2800,rarity:'uncommon'},
-  {id:19,cat:'vetements',icon:'⛑️',name:'Casque MICH 2000',sub:'Casque balistique',price:2400,rarity:'uncommon'},
-  {id:20,cat:'vetements',icon:'🥾',name:'Bottes militaires',sub:'Résistantes & silencieuses',price:900,rarity:'common'},
-  {id:21,cat:'vetements',icon:'🎒',name:'Sac Taloon',sub:'35 emplacements',price:1400,rarity:'common'},
-  {id:22,cat:'vehicules',icon:'🚗',name:'Olga 24',sub:'Berline civile réparée',price:25000,rarity:'rare'},
-  {id:23,cat:'vehicules',icon:'🚁',name:'Hélicoptère (mod)',sub:'Transport aérien',price:85000,rarity:'rare'},
-  {id:24,cat:'vehicules',icon:'🚙',name:'Sarka 120',sub:'Compacte tout-terrain',price:18000,rarity:'rare'},
-  {id:25,cat:'ressources',icon:'⚙️',name:'Pièces moteur',sub:'Composant mécanique',price:600,rarity:'uncommon'},
-  {id:26,cat:'ressources',icon:'⛽',name:'Jerrican essence',sub:'Carburant 20L',price:1200,rarity:'uncommon'},
-  {id:27,cat:'ressources',icon:'🔧',name:'Clé à molette',sub:'Outil polyvalent',price:200,rarity:'common'},
-  {id:28,cat:'ressources',icon:'🪵',name:'Planche de bois',sub:'Construction & feux',price:30,rarity:'common'},
+<script>
+const CATS={armes:'⚔ Armes',nourriture:'🍖 Nourriture',medical:'💊 Médical',vetements:'🎒 Équipement',vehicules:'🚗 Véhicules',ressources:'⚙ Ressources'};
+const SK='mag_v2_items';
+let filt='all',adminOpen=false,nid=200,collapsed={};
+
+const DEF=[
+  {id:1,cat:'armes',icon:'🔫',name:'AKM',desc:'Fusil d\'assaut 7.62mm',price:45,rar:'uncommon'},
+  {id:2,cat:'armes',icon:'🔫',name:'M4A1',desc:'Fusil d\'assaut 5.56mm',price:62,rar:'uncommon'},
+  {id:3,cat:'armes',icon:'🎯',name:'SVD Dragunov',desc:'Fusil de précision 7.62mm',price:120,rar:'rare'},
+  {id:4,cat:'armes',icon:'💥',name:'FNX45',desc:'Pistolet .45 ACP',price:22,rar:'common'},
+  {id:5,cat:'armes',icon:'💣',name:'Grenade M67',desc:'Grenade à fragmentation',price:28,rar:'uncommon'},
+  {id:6,cat:'armes',icon:'🏹',name:'Arbalète',desc:'Silencieuse & redoutable',price:18,rar:'common'},
+  {id:7,cat:'nourriture',icon:'🥫',name:'Conserve de haricots',desc:'Nourriture en boîte',price:1,rar:'common'},
+  {id:8,cat:'nourriture',icon:'🥩',name:'Steak de cerf',desc:'Viande cuite',price:2,rar:'common'},
+  {id:9,cat:'nourriture',icon:'💧',name:'Bouteille d\'eau 1L',desc:'Eau potable',price:1,rar:'common'},
+  {id:10,cat:'medical',icon:'💉',name:'EpiPen',desc:'Choc anaphylactique',price:35,rar:'rare'},
+  {id:11,cat:'medical',icon:'🩹',name:'Kit de suture',desc:'Referme les coupures',price:8,rar:'uncommon'},
+  {id:12,cat:'medical',icon:'💊',name:'Tétracycline',desc:'Antibiotique',price:12,rar:'uncommon'},
+  {id:13,cat:'medical',icon:'🩺',name:'Défibrillateur',desc:'Réanimation cardiaque',price:85,rar:'rare'},
+  {id:14,cat:'medical',icon:'🩹',name:'Bandage',desc:'Arrête les saignements',price:2,rar:'common'},
+  {id:15,cat:'vetements',icon:'🎒',name:'Sac ALICE 65L',desc:'Sac à dos militaire',price:28,rar:'uncommon'},
+  {id:16,cat:'vetements',icon:'⛑️',name:'Casque MICH 2000',desc:'Casque balistique',price:24,rar:'uncommon'},
+  {id:17,cat:'vetements',icon:'🥾',name:'Bottes militaires',desc:'Résistantes & silencieuses',price:9,rar:'common'},
+  {id:18,cat:'vehicules',icon:'🚗',name:'Olga 24',desc:'Berline civile réparée',price:250,rar:'rare'},
+  {id:19,cat:'vehicules',icon:'🚁',name:'Hélicoptère (mod)',desc:'Transport aérien',price:850,rar:'rare'},
+  {id:20,cat:'ressources',icon:'⚙️',name:'Pièces moteur',desc:'Composant mécanique',price:6,rar:'uncommon'},
+  {id:21,cat:'ressources',icon:'⛽',name:'Jerrican essence',desc:'Carburant 20L',price:12,rar:'uncommon'},
+  {id:22,cat:'ressources',icon:'🔧',name:'Clé à molette',desc:'Outil polyvalent',price:2,rar:'common'},
 ];
 
-function loadItems(){
-  try{
-    const raw=localStorage.getItem(STORAGE_KEY);
-    if(raw){const d=JSON.parse(raw);nextId=d.nextId||200;return d.items;}
-  }catch(e){}
-  return JSON.parse(JSON.stringify(DEFAULT_ITEMS));
-}
-function saveItems(){
-  try{
-    const date=new Date().toLocaleDateString('fr-FR');
-    localStorage.setItem(STORAGE_KEY,JSON.stringify({items:ITEMS,nextId,date}));
-    document.getElementById('stat-date').textContent=date;
-  }catch(e){toast('Erreur sauvegarde',true);}
-}
-function getDate(){
-  try{const r=localStorage.getItem(STORAGE_KEY);if(r){const d=JSON.parse(r);return d.date||'—';}}catch(e){}return '—';
-}
+function load(){try{const r=localStorage.getItem(SK);if(r){const d=JSON.parse(r);nid=d.nid||200;return d.items;}}catch(e){}return JSON.parse(JSON.stringify(DEF));}
+function save(){try{const date=new Date().toLocaleDateString('fr-FR');localStorage.setItem(SK,JSON.stringify({items:ITEMS,nid,date}));document.getElementById('s-date').textContent=date;}catch(e){}}
+function getDate(){try{const r=localStorage.getItem(SK);if(r)return JSON.parse(r).date||'—';}catch(e){}return '—';}
 
-let ITEMS=loadItems();
-document.getElementById('stat-date').textContent=getDate();
+let ITEMS=load();
+document.getElementById('s-date').textContent=getDate();
 
-function toast(msg,err){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.className='toast'+(err?' err':'')+' show';
-  clearTimeout(t._t);
-  t._t=setTimeout(()=>t.classList.remove('show'),2400);
-}
-
-function setFilter(f,btn){
-  currentFilter=f;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  render();
-}
-function toggleAdmin(){
-  adminOpen=!adminOpen;
-  document.getElementById('adminPanel').classList.toggle('open',adminOpen);
-  document.getElementById('adminToggle').classList.toggle('active',adminOpen);
-}
+function toast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(ok?'ok':'err')+' show';clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2400);}
+function setF(f,btn){filt=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render();}
+function toggleA(){adminOpen=!adminOpen;document.getElementById('apanel').classList.toggle('open',adminOpen);document.getElementById('atgl').classList.toggle('on',adminOpen);}
+function toggleCat(cat){collapsed[cat]=!collapsed[cat];render();}
 
 function addItem(){
-  const icon=(document.getElementById('f-icon').value.trim()||'📦');
-  const name=document.getElementById('f-name').value.trim();
-  const sub=document.getElementById('f-sub').value.trim();
-  const price=parseInt(document.getElementById('f-price').value)||0;
-  const cat=document.getElementById('f-cat').value;
-  const rarity=document.getElementById('f-rarity').value;
-  if(!name){toast('// NOM REQUIS //',true);document.getElementById('f-name').focus();return;}
-  if(!price){toast('// PRIX REQUIS //',true);document.getElementById('f-price').focus();return;}
-  ITEMS.push({id:nextId++,cat,icon,name,sub,price,rarity});
-  saveItems();
-  ['f-name','f-sub','f-price','f-icon'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f-name').focus();
-  toast('✓ '+name+' ajouté !');
-  render();
+  const icon=document.getElementById('fi').value.trim()||'📦';
+  const name=document.getElementById('fn').value.trim();
+  const desc=document.getElementById('fd').value.trim();
+  const price=parseFloat(document.getElementById('fp').value)||0;
+  const cat=document.getElementById('fc').value;
+  const rar=document.getElementById('fr').value;
+  if(!name){toast('// NOM REQUIS //',false);document.getElementById('fn').focus();return;}
+  if(!price){toast('// PRIX REQUIS //',false);document.getElementById('fp').focus();return;}
+  ITEMS.push({id:nid++,cat,icon,name,desc,price,rar});
+  save();
+  ['fn','fd','fp','fi'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fn').focus();
+  toast('✓ '+name+' ajouté');render();
 }
 
-function deleteItem(id){
-  const item=ITEMS.find(i=>i.id===id);
-  if(!item)return;
-  if(!confirm('Supprimer "'+item.name+'" ?'))return;
-  ITEMS=ITEMS.filter(i=>i.id!==id);
-  saveItems();
-  toast('✕ '+item.name+' supprimé',true);
-  render();
+function delItem(id){
+  const it=ITEMS.find(i=>i.id===id);if(!it)return;
+  if(!confirm('Supprimer "'+it.name+'" ?'))return;
+  ITEMS=ITEMS.filter(i=>i.id!==id);save();toast('✕ '+it.name+' supprimé',false);render();
 }
 
-function exportJSON(){
-  const blob=new Blob([JSON.stringify({items:ITEMS,nextId,exported:new Date().toISOString()},null,2)],{type:'application/json'});
+function exportJ(){
+  const blob=new Blob([JSON.stringify({items:ITEMS,nid,exported:new Date().toISOString()},null,2)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mag_prices_'+new Date().toISOString().slice(0,10)+'.json';a.click();
-  toast('💾 Export JSON téléchargé !');
+  toast('💾 Export téléchargé');
 }
-function importJSON(e){
-  const file=e.target.files[0];if(!file)return;
+function importJ(e){
+  const f=e.target.files[0];if(!f)return;
   const r=new FileReader();
-  r.onload=ev=>{
-    try{
-      const d=JSON.parse(ev.target.result);
-      if(!d.items||!Array.isArray(d.items))throw new Error();
-      if(!confirm('Importer '+d.items.length+' items ? (remplace la liste actuelle)'))return;
-      ITEMS=d.items;nextId=d.nextId||200;
-      saveItems();toast('✓ Import réussi — '+ITEMS.length+' items');render();
-    }catch(err){toast('// FICHIER JSON INVALIDE //',true);}
-  };
-  r.readAsText(file);
-  e.target.value='';
+  r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!Array.isArray(d.items))throw 0;if(!confirm('Importer '+d.items.length+' items ? (remplace la liste actuelle)'))return;ITEMS=d.items;nid=d.nid||200;save();toast('✓ Import réussi — '+ITEMS.length+' items');render();}catch(err){toast('// FICHIER INVALIDE //',false);}};
+  r.readAsText(f);e.target.value='';
 }
-function resetData(){
-  if(!confirm('Réinitialiser avec les items par défaut ?'))return;
-  ITEMS=JSON.parse(JSON.stringify(DEFAULT_ITEMS));nextId=200;
-  saveItems();toast('// RESET OK //');render();
-}
+function resetD(){if(!confirm('Réinitialiser avec les items par défaut ?'))return;ITEMS=JSON.parse(JSON.stringify(DEF));nid=200;save();toast('Reset ok');render();}
 
 function fmtPrice(p){
-  if(p>=1000000)return (p/1000000).toFixed(1)+'M';
-  if(p>=1000)return (p/1000).toFixed(p%1000===0?0:1)+'k';
-  return p.toString();
+  if(p>=1000)return (p/1000).toFixed(p%1000===0?0:1)+'k €';
+  return p%1===0?p+' €':p.toFixed(2)+' €';
 }
 
 function render(){
-  const q=document.getElementById('searchInput').value.toLowerCase();
+  const q=document.getElementById('srch').value.toLowerCase();
   const filtered=ITEMS.filter(i=>{
-    const matchCat=currentFilter==='all'||i.cat===currentFilter;
-    const matchQ=!q||i.name.toLowerCase().includes(q)||(i.sub||'').toLowerCase().includes(q);
-    return matchCat&&matchQ;
+    const mc=filt==='all'||i.cat===filt;
+    const mq=!q||i.name.toLowerCase().includes(q)||(i.desc||'').toLowerCase().includes(q);
+    return mc&&mq;
   });
-  document.getElementById('stat-items').textContent=filtered.length;
-  const total=filtered.reduce((s,i)=>s+i.price,0);
-  document.getElementById('stat-total').textContent=fmtPrice(total)+' RUB';
+  document.getElementById('s-items').textContent=filtered.length;
+  const catsShown=new Set(filtered.map(i=>i.cat));
+  document.getElementById('s-cats').textContent=catsShown.size;
+  const prices=filtered.map(i=>i.price);
+  document.getElementById('s-min').textContent=prices.length?fmtPrice(Math.min(...prices)):'—';
+  document.getElementById('s-max').textContent=prices.length?fmtPrice(Math.max(...prices)):'—';
 
-  const cats=Object.keys(CAT_LABELS);
+  const catOrder=Object.keys(CATS);
   let html='';
-  cats.forEach(cat=>{
+  catOrder.forEach(cat=>{
     const rows=filtered.filter(i=>i.cat===cat);
     if(!rows.length)return;
-    html+=`<div class="category-header">${CAT_LABELS[cat]}<span style="font-size:10px;color:#3a5a2a;margin-left:auto;font-family:'Share Tech Mono',monospace">${rows.length} items</span></div><div class="price-grid">`;
-    rows.sort((a,b)=>b.price-a.price).forEach(item=>{
-      const pc=item.rarity==='rare'?'rare-price':item.rarity==='uncommon'?'uncommon-price':'';
-      html+=`<div class="price-row ${item.rarity}">
-        <div class="rarity-dot"></div>
-        <div class="item-emoji">${item.icon||'📦'}</div>
-        <div class="item-info">
-          <div class="item-name">${item.name}</div>
-          <div class="item-sub">${item.sub||'&nbsp;'}</div>
-        </div>
-        <div class="item-price">
-          <div class="price-val ${pc}">${fmtPrice(item.price)}</div>
-          <span class="price-unit">RUB</span>
-        </div>
-        <button class="btn-del" onclick="deleteItem(${item.id})" title="Supprimer">✕</button>
+    const isCol=collapsed[cat];
+    html+=`<div class="cat-block">
+      <div class="cat-head" onclick="toggleCat('${cat}')">
+        <span class="cat-label">${CATS[cat]}</span>
+        <span class="cat-count">${rows.length} items</span>
+        <i class="ti ti-chevron-down cat-chevron ${isCol?'':'open'}" aria-hidden="true"></i>
       </div>`;
-    });
-    html+='</div>';
+    if(!isCol){
+      html+=`<table class="shop-table"><thead><tr>
+        <th style="width:42px"></th>
+        <th>Item</th>
+        <th class="hide-mobile" style="width:115px">Rareté</th>
+        <th class="price-col" style="width:120px">Prix</th>
+        <th style="width:36px"></th>
+      </tr></thead><tbody>`;
+      rows.sort((a,b)=>b.price-a.price).forEach(item=>{
+        const pc=item.rar==='rare'?'p-rare':item.rar==='uncommon'?'p-uncommon':'';
+        const rb=item.rar==='rare'?'rar-rare':item.rar==='uncommon'?'rar-uncommon':'rar-common';
+        const rl=item.rar==='rare'?'Rare':item.rar==='uncommon'?'Peu commun':'Commun';
+        html+=`<tr>
+          <td class="td-icon">${item.icon||'📦'}</td>
+          <td><div class="td-name">${item.name}</div><div class="td-desc">${item.desc||''}</div></td>
+          <td class="td-rar hide-mobile"><span class="rar-badge ${rb}">${rl}</span></td>
+          <td class="td-price"><span class="price-num ${pc}">${fmtPrice(item.price)}</span></td>
+          <td class="td-del"><button class="delbtn" onclick="delItem(${item.id})" title="Supprimer"><i class="ti ti-x" aria-hidden="true"></i></button></td>
+        </tr>`;
+      });
+      html+=`</tbody></table>`;
+    }
+    html+=`</div>`;
   });
-  if(!filtered.length)html='<div class="no-results">// AUCUN ITEM TROUVÉ //</div>';
+  if(!filtered.length)html='<div class="no-res">// AUCUN ITEM TROUVÉ //</div>';
   document.getElementById('content').innerHTML=html;
 }
 render();
 
-// Particles
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-resize();window.addEventListener('resize',resize);
-const pts=Array.from({length:55},()=>({
-  x:Math.random()*canvas.width,y:Math.random()*canvas.height,
-  r:Math.random()*1.3+0.3,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,
-  a:Math.random()*.45+.07
-}));
-(function anim(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  pts.forEach(p=>{
-    p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;
-    if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(80,160,40,'+p.a+')';ctx.fill();
-  });
-  requestAnimationFrame(anim);
-})();
+const pc=document.getElementById('pc');
+const cx=pc.getContext('2d');
+function rsz(){pc.width=window.innerWidth;pc.height=window.innerHeight;}rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:55},()=>({x:Math.random()*pc.width,y:Math.random()*pc.height,r:Math.random()*1.2+.3,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,a:Math.random()*.35+.06}));
+(function anim(){cx.clearRect(0,0,pc.width,pc.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=pc.width;if(p.x>pc.width)p.x=0;if(p.y<0)p.y=pc.height;if(p.y>pc.height)p.y=0;cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(70,140,30,'+p.a+')';cx.fill();});requestAnimationFrame(anim);})();
 </script>
 </body>
 </html>
