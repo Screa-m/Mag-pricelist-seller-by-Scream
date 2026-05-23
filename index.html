@@ -38,27 +38,25 @@ header{background:rgba(0,0,0,0.75);border-bottom:2px solid #2a4a1a;padding:18px 
 .aexp{background:rgba(15,50,110,0.4);border:1px solid #154a8a;color:#5090cc}.aexp:hover{background:rgba(15,50,110,0.7)}
 .aimp{background:rgba(50,15,110,0.4);border:1px solid #4a158a;color:#9060cc}.aimp:hover{background:rgba(50,15,110,0.7)}
 .arst{background:rgba(110,15,15,0.4);border:1px solid #8a1515;color:#cc5050}.arst:hover{background:rgba(110,15,15,0.7)}
-
-/* EMOJI PICKER */
 .emoji-wrap{position:relative}
 .emoji-trigger{width:100%;background:rgba(15,35,8,0.95);border:1px solid #2a4a14;color:#b0cc80;padding:7px 8px;font-family:'Share Tech Mono',monospace;font-size:18px;outline:none;border-radius:3px;cursor:pointer;text-align:center;height:34px;display:flex;align-items:center;justify-content:center;gap:4px;transition:border-color .18s}
 .emoji-trigger:hover{border-color:#6a9a30}
 .emoji-trigger span.placeholder{font-size:11px;color:#4a7a28}
-.emoji-picker{position:absolute;top:calc(100% + 4px);left:0;width:280px;background:#081408;border:1px solid #2a4a14;border-radius:4px;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.8);display:none}
+.emoji-picker{position:absolute;top:calc(100% + 4px);left:0;width:320px;background:#060e05;border:1px solid #2a4a14;border-radius:4px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.9);display:none}
 .emoji-picker.open{display:block}
 .ep-search{width:100%;background:rgba(15,35,8,0.95);border:none;border-bottom:1px solid #1a3a0a;color:#a0cc70;padding:8px 10px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none}
 .ep-search::placeholder{color:#2a5a18}
-.ep-cats{display:flex;gap:2px;padding:6px 6px 4px;border-bottom:1px solid #1a3a0a;flex-wrap:wrap}
-.ep-cat{padding:3px 7px;background:none;border:1px solid #1a3a0a;color:#4a7a28;font-size:13px;cursor:pointer;border-radius:2px;transition:all .15s}
+.ep-cats{display:flex;gap:2px;padding:5px 5px 4px;border-bottom:1px solid #1a3a0a;flex-wrap:wrap;max-height:64px;overflow-y:auto}
+.ep-cat{padding:3px 7px;background:none;border:1px solid #1a3a0a;color:#4a7a28;font-size:11px;cursor:pointer;border-radius:2px;transition:all .15s;white-space:nowrap;font-family:'Share Tech Mono',monospace}
 .ep-cat:hover,.ep-cat.active{background:rgba(40,90,15,0.4);border-color:#3a6a18;color:#8acc40}
-.ep-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:6px;max-height:180px;overflow-y:auto}
+.ep-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;padding:6px;max-height:200px;overflow-y:auto}
 .ep-grid::-webkit-scrollbar{width:4px}
 .ep-grid::-webkit-scrollbar-track{background:#0a1a08}
 .ep-grid::-webkit-scrollbar-thumb{background:#2a4a14;border-radius:2px}
-.ep-btn{background:none;border:none;font-size:20px;cursor:pointer;padding:4px;border-radius:3px;transition:background .12s;line-height:1}
+.ep-btn{background:none;border:none;font-size:22px;cursor:pointer;padding:4px 2px;border-radius:3px;transition:background .12s;line-height:1;text-align:center}
 .ep-btn:hover{background:rgba(50,100,20,0.4)}
 .ep-empty{padding:16px;text-align:center;font-size:10px;color:#2a4a18;letter-spacing:2px}
-
+.ep-count{font-size:9px;color:#2a5a18;padding:3px 8px;border-top:1px solid #1a3a0a;letter-spacing:1px;text-align:right}
 .statsrow{display:flex;gap:0;background:rgba(0,0,0,0.45);border-bottom:1px solid #162e0a}
 .stat{flex:1;padding:7px 14px;border-right:1px solid #162e0a;font-size:10px;color:#3a6020;letter-spacing:1px}
 .stat:last-child{border-right:none}
@@ -107,14 +105,13 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
   .statsrow{flex-wrap:wrap}
   .stat{min-width:50%}
   .shop-table thead th.hide-mobile,.shop-table td.hide-mobile{display:none}
-  .emoji-picker{width:240px}
+  .emoji-picker{width:260px}
 }
 </style>
 </head>
 <body>
 <div id="bgcanvas"><canvas id="pc"></canvas></div>
 <div class="app">
-
 <header>
   <div class="logo">[<em>MAG</em>]</div>
   <div class="tagline">Price List · by Scream · DayZ PVE Only Community</div>
@@ -127,10 +124,13 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
   </div>
   <button class="fbtn on" onclick="setF('all',this)">Tout</button>
   <button class="fbtn" onclick="setF('armes',this)">⚔ Armes</button>
+  <button class="fbtn" onclick="setF('munitions',this)">🎯 Munitions</button>
   <button class="fbtn" onclick="setF('nourriture',this)">🍖 Nourr.</button>
   <button class="fbtn" onclick="setF('medical',this)">💊 Médical</button>
   <button class="fbtn" onclick="setF('vetements',this)">🎒 Équip.</button>
   <button class="fbtn" onclick="setF('vehicules',this)">🚗 Véhic.</button>
+  <button class="fbtn" onclick="setF('construction',this)">🏗 Constr.</button>
+  <button class="fbtn" onclick="setF('electronique',this)">📡 Électro.</button>
   <button class="fbtn" onclick="setF('ressources',this)">⚙ Ressources</button>
   <button class="abtn" id="atgl" onclick="toggleA()"><i class="ti ti-settings" aria-hidden="true"></i> ADMIN</button>
 </div>
@@ -144,9 +144,10 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
         <span id="epSelected" class="placeholder">Choisir</span>
       </button>
       <div class="emoji-picker" id="epPicker">
-        <input class="ep-search" id="epSearch" placeholder="🔍 Rechercher..." oninput="filterEmoji()">
+        <input class="ep-search" id="epSearch" placeholder="🔍 Rechercher un emoji..." oninput="filterEmoji()">
         <div class="ep-cats" id="epCats"></div>
         <div class="ep-grid" id="epGrid"></div>
+        <div class="ep-count" id="epCount"></div>
       </div>
     </div>
     <div><label class="alabel">NOM *</label><input class="ainput" id="fn" placeholder="AKM..." onkeydown="if(event.key==='Enter')addItem()"></div>
@@ -155,10 +156,13 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
     <div><label class="alabel">CATÉGORIE</label>
       <select class="ainput" id="fc">
         <option value="armes">⚔ Armes</option>
+        <option value="munitions">🎯 Munitions</option>
         <option value="nourriture">🍖 Nourriture</option>
         <option value="medical">💊 Médical</option>
         <option value="vetements">🎒 Équipement</option>
         <option value="vehicules">🚗 Véhicules</option>
+        <option value="construction">🏗 Construction</option>
+        <option value="electronique">📡 Électronique</option>
         <option value="ressources">⚙ Ressources</option>
       </select>
     </div>
@@ -192,7 +196,7 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
   <span><span class="ldot" style="background:#3a6020"></span>Commun</span>
   <span><span class="ldot" style="background:#1a3a8a"></span>Peu commun</span>
   <span><span class="ldot" style="background:#6a1a9a"></span>Rare</span>
-  <span style="margin-left:auto;font-size:9px;color:#1e3a10">// Survole un item → supprimer &nbsp;·&nbsp; Clic catégorie → replier</span>
+  <span style="margin-left:auto;font-size:9px;color:#1e3a10">// Survole un item → supprimer · Clic catégorie → replier</span>
 </div>
 
 <div id="content"></div>
@@ -203,19 +207,24 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
 
 <script>
 const EMOJI_DATA = {
-  'Armes': ['🔫','🗡️','⚔️','🏹','💣','🧨','🪖','🛡️','🔪','🪃','💥','🎯','🪤'],
-  'Nourriture': ['🍖','🥩','🥫','🥚','🧀','🍞','🥓','🐟','🐠','🎣','🍺','💧','🧃','🥤','🍵','☕','🫙','🥣','🍳'],
-  'Médical': ['💊','💉','🩹','🩺','🩻','🧬','🔬','🩸','🏥','🧪','🧫','❤️‍🩹','🫀','🫁'],
-  'Équipement': ['🎒','🧤','🥾','⛑️','🪖','🧥','👕','👖','🧣','🕶️','🥽','🌂','🪣','🔦','🕯️','🪔','🧲','📡'],
-  'Véhicules': ['🚗','🚙','🚕','🛻','🚌','🚑','🚒','🚓','🏎️','🚁','⛵','🚤','🛥️','⛽','🛞','🔑'],
-  'Ressources': ['⚙️','🔧','🔩','🪛','🔨','🪚','⛏️','🪝','🪜','🧰','🪤','💡','🔋','🪫','🪵','🧱','⛏️','🪨','🏗️','🔑','🗝️'],
-  'Nature': ['🌲','🌳','🌿','🍄','🌾','🪨','🌊','🔥','❄️','⛈️','🌫️','🌙','☀️','⭐'],
-  'Divers': ['📦','💰','💵','🪙','📻','📡','🗺️','🧭','⌚','📱','💻','🔐','🔒','🗝️','📋','📌','🚩','⚠️','☢️','☣️','🏴','🏳️'],
+  '⚔️ Armes': ['🔫','🗡️','⚔️','🏹','💣','🧨','🔪','🪃','🛡️','🪖','🎯','💥','🪤','🔩','⚙️','🪬','🗿','☠️','💀','👊','🤜','🥊','🥋','🪓','🔨','⛏️','🪚','🔧','🪛','🔱','⚜️','🏴‍☠️','🚨','🚩','🏴'],
+  '💊 Médical': ['💊','💉','🩹','🩺','🩻','🧬','🔬','🩸','🏥','🧪','🧫','❤️‍🩹','🫀','🫁','🩼','🦽','🦼','🧲','🌡️','💆','🫶','🤲','🙏','🫂','❤️','🩷','💛','💚','💙','🤍','🖤','🩶','🤎','💗','💓','💞','💕','💟','❣️','💔'],
+  '🍖 Nourriture': ['🍖','🥩','🥫','🥚','🧀','🍞','🥓','🐟','🐠','🎣','🍺','💧','🧃','🥤','🍵','☕','🫙','🥣','🍳','🥗','🫕','🥘','🍲','🥙','🌮','🌯','🥪','🍱','🍣','🍤','🦐','🦑','🦞','🦀','🦪','🍄','🥜','🌰','🫘','🧅','🧄','🥕','🌽','🍅','🫐','🍓','🍇','🍎','🍋','🍊','🍌','🥭','🍍','🥥','🫒','🧈','🥞','🧇','🥐','🍕','🌶️','🫑','🥦','🥬','🥒','🫛'],
+  '🎒 Équipement': ['🎒','🧤','🥾','⛑️','🪖','🧥','👕','👖','🧣','🕶️','🥽','🌂','🪣','🔦','🕯️','🪔','🧲','📡','👟','👞','🥿','👢','👗','🧦','🩱','🩲','🩳','🧢','👒','🎩','🪭','🧳','💼','👜','👝','🛍️','🪆','🎽','🥻','👙','🩴','🪬','📿','💍','💎','⌚','🕰️','⏰','🔮','🪬','🧿','📿'],
+  '🚗 Véhicules': ['🚗','🚙','🚕','🛻','🚌','🚑','🚒','🚓','🏎️','🚁','⛵','🚤','🛥️','⛽','🛞','🔑','🗝️','🚀','🛸','🚂','🚃','🚄','🚅','🚆','🚇','🚈','🚉','🚊','🚝','🚞','🚋','🚍','🚎','🚐','🚑','🚒','🚓','🚔','🚖','🚘','🚍','🛺','🏍️','🛵','🚲','🛴','🛹','🛼','🚏','🛣️','🛤️','⛽','🚧','🚦','🚥','🛑','🚨'],
+  '🏗️ Construction': ['🏗️','🧱','🪵','🪨','🔩','🪛','🔨','⛏️','🪚','🔧','🗜️','⚙️','🪤','🧰','🪝','🪜','🪣','🧲','📐','📏','✂️','🗡️','🔑','🗝️','🚪','🪞','🪟','🛏️','🛋️','🚿','🛁','🪠','🪥','🧹','🧺','🧻','🪣','🧴','🧷','🧹','🪣','🏠','🏡','🏢','🏣','🏤','🏥','🏦','🏧','🏨','🏩','🏪','🏫','🏬','🏭','🏯','🏰','💒','🗼','🗽','⛪','🕌','🕍','⛩️','🕋','⛲','⛺','🏕️','🏖️','🏗️','🏘️','🏙️','🏚️'],
+  '📡 Électronique': ['📡','📻','📺','💻','🖥️','🖨️','⌨️','🖱️','💾','💿','📀','📱','☎️','📞','📟','📠','🔋','🪫','🔌','💡','🔦','🕯️','🪔','🧯','🔭','🔬','📷','📸','📹','🎥','📽️','🎞️','📞','📟','📠','📺','📻','🎙️','🎚️','🎛️','🧭','⏱️','⏲️','⏰','🕰️','⌚','📡','🛰️','🚀','🛸','🔭','🪬','🧲','⚡','🔋','💡','🔆','🔅','📶','🛜','📲','💬','📳','📴','📵','📶','📳'],
+  '🎯 Munitions': ['🎯','💫','⭐','🌟','✨','💥','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🔘','🟥','🟧','🟨','🟩','🟦','🟪','🟫','⬛','⬜','🔺','🔻','🔷','🔶','🔹','🔸','🔲','🔳','▪️','▫️','◾','◽','◼️','◻️','🗯️','💭','💬','🔔','🔕','🎵','🎶','🎼','🎹','🥁','🪘','🎷','🎺','🎸','🪕','🎻','🪗'],
+  '⚙️ Ressources': ['⚙️','🔧','🔩','🪛','🔨','🪚','⛏️','🪝','🪜','🧰','🪤','💡','🔋','🪫','🪵','🧱','⛏️','🪨','🏗️','🔑','🗝️','🌲','🌳','🌿','🍄','🌾','🪨','🔥','❄️','💎','🪙','💰','💵','💴','💶','💷','💸','💳','🪙','🏺','🗿','🧿','🪬','📿','💍','🔮','🧲','⚡','🌊','💧','🫧','🌀','🌈','⛅','🌤️','🌥️','🌦️','🌧️','⛈️','🌩️','🌨️','🌪️','🌫️','🌬️','🌀'],
+  '🌿 Nature': ['🌲','🌳','🌴','🌵','🎋','🎍','🍀','☘️','🌿','🍃','🍂','🍁','🌾','🌺','🌸','🌼','🌻','🌹','🥀','🌷','💐','🍄','🌰','🦔','🦡','🦦','🦫','🐺','🦊','🐗','🦌','🐦','🦅','🦆','🦉','🦇','🐝','🐛','🦋','🐌','🐞','🐜','🦟','🦗','🕷️','🦂','🐢','🐍','🦎','🦖','🦕','🐊','🐸','🐲','🐉','☀️','🌙','⭐','🌟','💫','✨','⚡','❄️','🔥','💧','🌊','🌈','⛅','🌤️','🌥️','🌦️','🌧️','⛈️','🌩️','🌨️','🌪️','🌫️'],
+  '💀 DayZ': ['💀','☠️','🧟','🧟‍♂️','🧟‍♀️','👻','👾','👽','🤖','🎃','🩸','🪦','⚰️','⚱️','🗡️','☢️','☣️','⚠️','🚨','🚫','⛔','🔞','📵','🚷','🚯','🚳','🚱','📛','🔕','🔇','💢','💯','‼️','⁉️','❓','❗','🆘','🆖','🆗','🆙','🆕','🆓','🆒','🅰️','🅱️','🆎','🆑','🅾️','🆔','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🏴','🏳️','🚩','🏴‍☠️','🎌','🏁'],
+  '😀 Visages': ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','🫠','😉','😊','😇','🥰','😍','🤩','😘','😗','☺️','😚','😙','🥲','😋','😛','😜','🤪','😝','🤑','🤗','🤭','🫢','🫣','🤫','🤔','🫡','🤐','🤨','😐','😑','😶','🫥','😏','😒','🙄','😬','🤥','🫨','😌','😔','😪','🤤','😴','😷','🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','💫','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','🫤','😟','🙁','☹️','😮','😯','😲','😳','🥺','🥹','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺','👻','👽','👾','🤖'],
 };
 
 let selectedEmoji = '';
 let currentEpCat = Object.keys(EMOJI_DATA)[0];
 let pickerOpen = false;
+let allEmojis = [...new Set(Object.values(EMOJI_DATA).flat())];
 
 function buildPicker() {
   const catsEl = document.getElementById('epCats');
@@ -237,17 +246,22 @@ function buildPicker() {
 
 function renderGrid(emojis) {
   const grid = document.getElementById('epGrid');
-  if (!emojis.length) { grid.innerHTML = '<div class="ep-empty">// AUCUN RÉSULTAT</div>'; return; }
-  grid.innerHTML = emojis.map(e =>
-    `<button class="ep-btn" onclick="selectEmoji('${e}')" title="${e}">${e}</button>`
-  ).join('');
+  const count = document.getElementById('epCount');
+  if (!emojis.length) {
+    grid.innerHTML = '<div class="ep-empty">// AUCUN RÉSULTAT //</div>';
+    count.textContent = '';
+    return;
+  }
+  grid.innerHTML = emojis.map(e => `<button class="ep-btn" onclick="selectEmoji('${e}')">${e}</button>`).join('');
+  count.textContent = emojis.length + ' emojis';
 }
 
 function filterEmoji() {
-  const q = document.getElementById('epSearch').value.toLowerCase();
+  const q = document.getElementById('epSearch').value.toLowerCase().trim();
   if (!q) { renderGrid(EMOJI_DATA[currentEpCat]); return; }
-  const all = Object.values(EMOJI_DATA).flat();
-  renderGrid([...new Set(all)]);
+  renderGrid([...new Set(allEmojis)].filter(e => {
+    try { return e.toLowerCase().includes(q); } catch(x) { return false; }
+  }));
 }
 
 function selectEmoji(e) {
@@ -275,8 +289,8 @@ document.addEventListener('click', e => {
 
 buildPicker();
 
-const CATS={armes:'⚔ Armes',nourriture:'🍖 Nourriture',medical:'💊 Médical',vetements:'🎒 Équipement',vehicules:'🚗 Véhicules',ressources:'⚙ Ressources'};
-const SK='mag_v2_items';
+const CATS={armes:'⚔ Armes',munitions:'🎯 Munitions',nourriture:'🍖 Nourriture',medical:'💊 Médical',vetements:'🎒 Équipement',vehicules:'🚗 Véhicules',construction:'🏗 Construction',electronique:'📡 Électronique',ressources:'⚙ Ressources'};
+const SK='mag_v3_items';
 let filt='all',adminOpen=false,nid=200,collapsed={};
 
 const DEF=[
@@ -286,22 +300,28 @@ const DEF=[
   {id:4,cat:'armes',icon:'💥',name:'FNX45',desc:'Pistolet .45 ACP',price:22,rar:'common'},
   {id:5,cat:'armes',icon:'💣',name:'Grenade M67',desc:'Grenade à fragmentation',price:28,rar:'uncommon'},
   {id:6,cat:'armes',icon:'🏹',name:'Arbalète',desc:'Silencieuse & redoutable',price:18,rar:'common'},
-  {id:7,cat:'nourriture',icon:'🥫',name:'Conserve de haricots',desc:'Nourriture en boîte',price:1,rar:'common'},
-  {id:8,cat:'nourriture',icon:'🥩',name:'Steak de cerf',desc:'Viande cuite',price:2,rar:'common'},
-  {id:9,cat:'nourriture',icon:'💧',name:'Bouteille d\'eau 1L',desc:'Eau potable',price:1,rar:'common'},
-  {id:10,cat:'medical',icon:'💉',name:'EpiPen',desc:'Choc anaphylactique',price:35,rar:'rare'},
-  {id:11,cat:'medical',icon:'🩹',name:'Kit de suture',desc:'Referme les coupures',price:8,rar:'uncommon'},
-  {id:12,cat:'medical',icon:'💊',name:'Tétracycline',desc:'Antibiotique',price:12,rar:'uncommon'},
-  {id:13,cat:'medical',icon:'🩺',name:'Défibrillateur',desc:'Réanimation cardiaque',price:85,rar:'rare'},
-  {id:14,cat:'medical',icon:'🩹',name:'Bandage',desc:'Arrête les saignements',price:2,rar:'common'},
-  {id:15,cat:'vetements',icon:'🎒',name:'Sac ALICE 65L',desc:'Sac à dos militaire',price:28,rar:'uncommon'},
-  {id:16,cat:'vetements',icon:'⛑️',name:'Casque MICH 2000',desc:'Casque balistique',price:24,rar:'uncommon'},
-  {id:17,cat:'vetements',icon:'🥾',name:'Bottes militaires',desc:'Résistantes & silencieuses',price:9,rar:'common'},
-  {id:18,cat:'vehicules',icon:'🚗',name:'Olga 24',desc:'Berline civile réparée',price:250,rar:'rare'},
-  {id:19,cat:'vehicules',icon:'🚁',name:'Hélicoptère (mod)',desc:'Transport aérien',price:850,rar:'rare'},
-  {id:20,cat:'ressources',icon:'⚙️',name:'Pièces moteur',desc:'Composant mécanique',price:6,rar:'uncommon'},
-  {id:21,cat:'ressources',icon:'⛽',name:'Jerrican essence',desc:'Carburant 20L',price:12,rar:'uncommon'},
-  {id:22,cat:'ressources',icon:'🔧',name:'Clé à molette',desc:'Outil polyvalent',price:2,rar:'common'},
+  {id:7,cat:'munitions',icon:'🎯',name:'Balles 7.62x39',desc:'Pour AKM / SKS',price:3,rar:'common'},
+  {id:8,cat:'munitions',icon:'🎯',name:'Balles 5.56x45',desc:'Pour M4A1 / CR-527',price:3,rar:'common'},
+  {id:9,cat:'munitions',icon:'🎯',name:'Balles .308 Win',desc:'Pour Mosin / SVD',price:5,rar:'uncommon'},
+  {id:10,cat:'nourriture',icon:'🥫',name:'Conserve de haricots',desc:'Nourriture en boîte',price:1,rar:'common'},
+  {id:11,cat:'nourriture',icon:'🥩',name:'Steak de cerf',desc:'Viande cuite',price:2,rar:'common'},
+  {id:12,cat:'nourriture',icon:'💧',name:'Bouteille d\'eau 1L',desc:'Eau potable',price:1,rar:'common'},
+  {id:13,cat:'medical',icon:'💉',name:'EpiPen',desc:'Choc anaphylactique',price:35,rar:'rare'},
+  {id:14,cat:'medical',icon:'🩹',name:'Kit de suture',desc:'Referme les coupures',price:8,rar:'uncommon'},
+  {id:15,cat:'medical',icon:'💊',name:'Tétracycline',desc:'Antibiotique',price:12,rar:'uncommon'},
+  {id:16,cat:'medical',icon:'🩺',name:'Défibrillateur',desc:'Réanimation cardiaque',price:85,rar:'rare'},
+  {id:17,cat:'medical',icon:'🩹',name:'Bandage',desc:'Arrête les saignements',price:2,rar:'common'},
+  {id:18,cat:'vetements',icon:'🎒',name:'Sac ALICE 65L',desc:'Sac à dos militaire',price:28,rar:'uncommon'},
+  {id:19,cat:'vetements',icon:'⛑️',name:'Casque MICH 2000',desc:'Casque balistique',price:24,rar:'uncommon'},
+  {id:20,cat:'vetements',icon:'🥾',name:'Bottes militaires',desc:'Résistantes & silencieuses',price:9,rar:'common'},
+  {id:21,cat:'vehicules',icon:'🚗',name:'Olga 24',desc:'Berline civile réparée',price:250,rar:'rare'},
+  {id:22,cat:'vehicules',icon:'🚁',name:'Hélicoptère (mod)',desc:'Transport aérien',price:850,rar:'rare'},
+  {id:23,cat:'construction',icon:'🧱',name:'Mur en bois',desc:'Base building',price:5,rar:'common'},
+  {id:24,cat:'construction',icon:'🪵',name:'Planche de bois',desc:'Matériau de construction',price:1,rar:'common'},
+  {id:25,cat:'electronique',icon:'📻',name:'Walkie-talkie',desc:'Communication radio',price:18,rar:'uncommon'},
+  {id:26,cat:'electronique',icon:'🔋',name:'Batterie 9V',desc:'Pour radio & lampes',price:3,rar:'common'},
+  {id:27,cat:'ressources',icon:'⚙️',name:'Pièces moteur',desc:'Composant mécanique',price:6,rar:'uncommon'},
+  {id:28,cat:'ressources',icon:'⛽',name:'Jerrican essence',desc:'Carburant 20L',price:12,rar:'uncommon'},
 ];
 
 function load(){try{const r=localStorage.getItem(SK);if(r){const d=JSON.parse(r);nid=d.nid||200;return d.items;}}catch(e){}return JSON.parse(JSON.stringify(DEF));}
