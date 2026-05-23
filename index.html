@@ -22,41 +22,10 @@ header{background:rgba(0,0,0,0.75);border-bottom:2px solid #2a4a1a;padding:18px 
 .search:focus{border-color:#4a8a2a}
 .fbtn{padding:6px 13px;background:rgba(8,20,4,0.8);border:1px solid #2a4a1a;color:#6a9a4a;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .18s;letter-spacing:1px;white-space:nowrap}
 .fbtn:hover,.fbtn.on{background:rgba(50,100,20,0.35);border-color:#5a9a2a;color:#9acc60}
-.abtn{padding:6px 13px;background:rgba(140,80,0,0.3);border:1px solid #7a4a10;color:#cc8020;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .18s;letter-spacing:1px;margin-left:auto}
-.abtn:hover,.abtn.on{background:rgba(160,90,0,0.55);border-color:#bb6010;color:#ffaa40}
-.admin-panel{background:rgba(4,12,2,0.97);border-bottom:2px solid #7a4a10;padding:14px 16px;display:none}
-.admin-panel.open{display:block}
-.apanel-title{font-family:'Oswald',sans-serif;font-size:12px;color:#cc8020;letter-spacing:3px;margin-bottom:12px}
-.aform{display:grid;grid-template-columns:90px 1fr 1fr 110px 150px 150px 44px;gap:7px;align-items:end}
-.ainput{width:100%;background:rgba(15,35,8,0.95);border:1px solid #2a4a14;color:#b0cc80;padding:7px 8px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;border-radius:3px}
-.ainput:focus{border-color:#6a9a30}
-.alabel{font-size:10px;color:#4a7a28;margin-bottom:3px;letter-spacing:1px;display:block}
-.aadd{width:44px;height:34px;background:rgba(30,100,10,0.5);border:1px solid #2a8a10;color:#70dd30;font-size:18px;cursor:pointer;border-radius:3px;transition:all .18s;display:flex;align-items:center;justify-content:center}
-.aadd:hover{background:rgba(40,130,15,0.7)}
-.aactions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.asec{padding:6px 13px;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;letter-spacing:1px;transition:all .18s}
-.aexp{background:rgba(15,50,110,0.4);border:1px solid #154a8a;color:#5090cc}.aexp:hover{background:rgba(15,50,110,0.7)}
-.aimp{background:rgba(50,15,110,0.4);border:1px solid #4a158a;color:#9060cc}.aimp:hover{background:rgba(50,15,110,0.7)}
-.arst{background:rgba(110,15,15,0.4);border:1px solid #8a1515;color:#cc5050}.arst:hover{background:rgba(110,15,15,0.7)}
-.emoji-wrap{position:relative}
-.emoji-trigger{width:100%;background:rgba(15,35,8,0.95);border:1px solid #2a4a14;color:#b0cc80;padding:7px 8px;font-family:'Share Tech Mono',monospace;font-size:18px;outline:none;border-radius:3px;cursor:pointer;text-align:center;height:34px;display:flex;align-items:center;justify-content:center;gap:4px;transition:border-color .18s}
-.emoji-trigger:hover{border-color:#6a9a30}
-.emoji-trigger span.placeholder{font-size:11px;color:#4a7a28}
-.emoji-picker{position:absolute;top:calc(100% + 4px);left:0;width:320px;background:#060e05;border:1px solid #2a4a14;border-radius:4px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.9);display:none}
-.emoji-picker.open{display:block}
-.ep-search{width:100%;background:rgba(15,35,8,0.95);border:none;border-bottom:1px solid #1a3a0a;color:#a0cc70;padding:8px 10px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none}
-.ep-search::placeholder{color:#2a5a18}
-.ep-cats{display:flex;gap:2px;padding:5px 5px 4px;border-bottom:1px solid #1a3a0a;flex-wrap:wrap;max-height:64px;overflow-y:auto}
-.ep-cat{padding:3px 7px;background:none;border:1px solid #1a3a0a;color:#4a7a28;font-size:11px;cursor:pointer;border-radius:2px;transition:all .15s;white-space:nowrap;font-family:'Share Tech Mono',monospace}
-.ep-cat:hover,.ep-cat.active{background:rgba(40,90,15,0.4);border-color:#3a6a18;color:#8acc40}
-.ep-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;padding:6px;max-height:200px;overflow-y:auto}
-.ep-grid::-webkit-scrollbar{width:4px}
-.ep-grid::-webkit-scrollbar-track{background:#0a1a08}
-.ep-grid::-webkit-scrollbar-thumb{background:#2a4a14;border-radius:2px}
-.ep-btn{background:none;border:none;font-size:22px;cursor:pointer;padding:4px 2px;border-radius:3px;transition:background .12s;line-height:1;text-align:center}
-.ep-btn:hover{background:rgba(50,100,20,0.4)}
-.ep-empty{padding:16px;text-align:center;font-size:10px;color:#2a4a18;letter-spacing:2px}
-.ep-count{font-size:9px;color:#2a5a18;padding:3px 8px;border-top:1px solid #1a3a0a;letter-spacing:1px;text-align:right}
+.rbtn{padding:6px 11px;background:rgba(20,60,10,0.4);border:1px solid #2a5a1a;color:#5a9a3a;font-family:'Share Tech Mono',monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .18s;letter-spacing:1px;margin-left:auto}
+.rbtn:hover{background:rgba(40,100,20,0.5);color:#8acc50}
+.rbtn.spin i{animation:spin .8s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .statsrow{display:flex;gap:0;background:rgba(0,0,0,0.45);border-bottom:1px solid #162e0a}
 .stat{flex:1;padding:7px 14px;border-right:1px solid #162e0a;font-size:10px;color:#3a6020;letter-spacing:1px}
 .stat:last-child{border-right:none}
@@ -89,29 +58,28 @@ header{background:rgba(0,0,0,0.75);border-bottom:2px solid #2a4a1a;padding:18px 
 .price-num{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;color:#88dd44;letter-spacing:1px;text-shadow:1px 1px 0 #1a4008,2px 2px 0 #0d2004}
 .price-num.p-rare{color:#cc88ff;text-shadow:1px 1px 0 #2a0840,2px 2px 0 #150420}
 .price-num.p-uncommon{color:#66aaee;text-shadow:1px 1px 0 #082040,2px 2px 0 #041020}
-.td-del{width:36px;text-align:center}
-.delbtn{background:none;border:none;color:#1e3a10;cursor:pointer;font-size:14px;padding:3px 6px;border-radius:2px;transition:all .18s;opacity:0}
-tr:hover .delbtn{opacity:1;color:#cc4040}
-.delbtn:hover{background:rgba(100,15,15,0.3)}
 .no-res{padding:50px;text-align:center;color:#2a4a18;font-size:13px;letter-spacing:3px}
+.loading{padding:60px;text-align:center;color:#3a6a20;font-size:12px;letter-spacing:3px}
+.loading i{font-size:28px;display:block;margin-bottom:12px;animation:spin .8s linear infinite}
+.error{padding:40px;text-align:center;color:#cc4040;font-size:11px;letter-spacing:2px;line-height:1.8}
 .toast{position:fixed;bottom:20px;right:20px;z-index:999;padding:9px 18px;font-family:'Share Tech Mono',monospace;font-size:11px;border-radius:3px;letter-spacing:1px;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.ok{background:rgba(8,25,4,0.97);border:1px solid #3a7a18;color:#70cc30}
 .toast.err{background:rgba(25,4,4,0.97);border:1px solid #7a1818;color:#cc5050}
 .toast.show{opacity:1}
+.sync-info{padding:5px 16px;background:rgba(0,0,0,0.2);border-bottom:1px solid #122608;font-size:10px;color:#2a5a18;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:#3a7a18;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacing:2px;border-top:1px solid #122608;margin-top:8px}
-#imp{display:none}
 @media(max-width:700px){
-  .aform{grid-template-columns:1fr 1fr}
-  .statsrow{flex-wrap:wrap}
-  .stat{min-width:50%}
+  .statsrow{flex-wrap:wrap}.stat{min-width:50%}
   .shop-table thead th.hide-mobile,.shop-table td.hide-mobile{display:none}
-  .emoji-picker{width:260px}
 }
 </style>
 </head>
 <body>
 <div id="bgcanvas"><canvas id="pc"></canvas></div>
 <div class="app">
+
 <header>
   <div class="logo">[<em>MAG</em>]</div>
   <div class="tagline">Price List · by Scream · DayZ PVE Only Community</div>
@@ -132,61 +100,17 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
   <button class="fbtn" onclick="setF('construction',this)">🏗 Constr.</button>
   <button class="fbtn" onclick="setF('electronique',this)">📡 Électro.</button>
   <button class="fbtn" onclick="setF('ressources',this)">⚙ Ressources</button>
-  <button class="abtn" id="atgl" onclick="toggleA()"><i class="ti ti-settings" aria-hidden="true"></i> ADMIN</button>
+  <button class="rbtn" id="refreshBtn" onclick="loadData(true)"><i class="ti ti-refresh" id="refreshIcon" aria-hidden="true"></i> Actualiser</button>
 </div>
 
-<div class="admin-panel" id="apanel">
-  <div class="apanel-title">// AJOUTER UN ITEM</div>
-  <div class="aform">
-    <div class="emoji-wrap" id="epWrap">
-      <label class="alabel">EMOJI</label>
-      <button type="button" class="emoji-trigger" id="epTrigger" onclick="togglePicker()">
-        <span id="epSelected" class="placeholder">Choisir</span>
-      </button>
-      <div class="emoji-picker" id="epPicker">
-        <input class="ep-search" id="epSearch" placeholder="🔍 Rechercher un emoji..." oninput="filterEmoji()">
-        <div class="ep-cats" id="epCats"></div>
-        <div class="ep-grid" id="epGrid"></div>
-        <div class="ep-count" id="epCount"></div>
-      </div>
-    </div>
-    <div><label class="alabel">NOM *</label><input class="ainput" id="fn" placeholder="AKM..." onkeydown="if(event.key==='Enter')addItem()"></div>
-    <div><label class="alabel">DESCRIPTION</label><input class="ainput" id="fd" placeholder="Description courte"></div>
-    <div><label class="alabel">PRIX (€) *</label><input class="ainput" id="fp" type="number" min="0" step="0.01" placeholder="15.00" onkeydown="if(event.key==='Enter')addItem()"></div>
-    <div><label class="alabel">CATÉGORIE</label>
-      <select class="ainput" id="fc">
-        <option value="armes">⚔ Armes</option>
-        <option value="munitions">🎯 Munitions</option>
-        <option value="nourriture">🍖 Nourriture</option>
-        <option value="medical">💊 Médical</option>
-        <option value="vetements">🎒 Équipement</option>
-        <option value="vehicules">🚗 Véhicules</option>
-        <option value="construction">🏗 Construction</option>
-        <option value="electronique">📡 Électronique</option>
-        <option value="ressources">⚙ Ressources</option>
-      </select>
-    </div>
-    <div><label class="alabel">RARETÉ</label>
-      <select class="ainput" id="fr">
-        <option value="common">Commun</option>
-        <option value="uncommon">Peu commun</option>
-        <option value="rare">Rare</option>
-      </select>
-    </div>
-    <div style="display:flex;align-items:flex-end">
-      <button class="aadd" onclick="addItem()" title="Ajouter"><i class="ti ti-plus" aria-hidden="true"></i></button>
-    </div>
-  </div>
-  <div class="aactions">
-    <button class="asec aexp" onclick="exportJ()"><i class="ti ti-download" aria-hidden="true"></i> Exporter JSON</button>
-    <button class="asec aimp" onclick="document.getElementById('imp').click()"><i class="ti ti-upload" aria-hidden="true"></i> Importer JSON</button>
-    <button class="asec arst" onclick="resetD()"><i class="ti ti-trash" aria-hidden="true"></i> Réinitialiser</button>
-  </div>
+<div class="sync-info">
+  <span class="sync-dot"></span>
+  Données synchronisées depuis Google Sheets · <span id="lastSync">chargement...</span>
 </div>
 
 <div class="statsrow">
-  <div class="stat"><b id="s-items">0</b>items affichés</div>
-  <div class="stat"><b id="s-cats">0</b>catégories</div>
+  <div class="stat"><b id="s-items">—</b>items affichés</div>
+  <div class="stat"><b id="s-cats">—</b>catégories</div>
   <div class="stat"><b id="s-min">—</b>prix mini</div>
   <div class="stat"><b id="s-max">—</b>prix maxi</div>
   <div class="stat"><b id="s-date">—</b>dernière maj</div>
@@ -196,180 +120,71 @@ footer{text-align:center;padding:16px;font-size:10px;color:#1e3a10;letter-spacin
   <span><span class="ldot" style="background:#3a6020"></span>Commun</span>
   <span><span class="ldot" style="background:#1a3a8a"></span>Peu commun</span>
   <span><span class="ldot" style="background:#6a1a9a"></span>Rare</span>
-  <span style="margin-left:auto;font-size:9px;color:#1e3a10">// Survole un item → supprimer · Clic catégorie → replier</span>
+  <span style="margin-left:auto;font-size:9px;color:#1e3a10">// Données chargées en direct depuis Google Sheets</span>
 </div>
 
-<div id="content"></div>
-<input type="file" id="imp" accept=".json" onchange="importJ(event)">
+<div id="content"><div class="loading"><i class="ti ti-loader" aria-hidden="true"></i>Connexion à Google Sheets...</div></div>
 <footer>[ MAG ] · NO 1 DAYZ PVE ONLY COMMUNITY · BATTLEMETRICS 2023 &amp; 2024 · by Scream</footer>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-const EMOJI_DATA = {
-  '⚔️ Armes': ['🔫','🗡️','⚔️','🏹','💣','🧨','🔪','🪃','🛡️','🪖','🎯','💥','🪤','🔩','⚙️','🪬','🗿','☠️','💀','👊','🤜','🥊','🥋','🪓','🔨','⛏️','🪚','🔧','🪛','🔱','⚜️','🏴‍☠️','🚨','🚩','🏴'],
-  '💊 Médical': ['💊','💉','🩹','🩺','🩻','🧬','🔬','🩸','🏥','🧪','🧫','❤️‍🩹','🫀','🫁','🩼','🦽','🦼','🧲','🌡️','💆','🫶','🤲','🙏','🫂','❤️','🩷','💛','💚','💙','🤍','🖤','🩶','🤎','💗','💓','💞','💕','💟','❣️','💔'],
-  '🍖 Nourriture': ['🍖','🥩','🥫','🥚','🧀','🍞','🥓','🐟','🐠','🎣','🍺','💧','🧃','🥤','🍵','☕','🫙','🥣','🍳','🥗','🫕','🥘','🍲','🥙','🌮','🌯','🥪','🍱','🍣','🍤','🦐','🦑','🦞','🦀','🦪','🍄','🥜','🌰','🫘','🧅','🧄','🥕','🌽','🍅','🫐','🍓','🍇','🍎','🍋','🍊','🍌','🥭','🍍','🥥','🫒','🧈','🥞','🧇','🥐','🍕','🌶️','🫑','🥦','🥬','🥒','🫛'],
-  '🎒 Équipement': ['🎒','🧤','🥾','⛑️','🪖','🧥','👕','👖','🧣','🕶️','🥽','🌂','🪣','🔦','🕯️','🪔','🧲','📡','👟','👞','🥿','👢','👗','🧦','🩱','🩲','🩳','🧢','👒','🎩','🪭','🧳','💼','👜','👝','🛍️','🪆','🎽','🥻','👙','🩴','🪬','📿','💍','💎','⌚','🕰️','⏰','🔮','🪬','🧿','📿'],
-  '🚗 Véhicules': ['🚗','🚙','🚕','🛻','🚌','🚑','🚒','🚓','🏎️','🚁','⛵','🚤','🛥️','⛽','🛞','🔑','🗝️','🚀','🛸','🚂','🚃','🚄','🚅','🚆','🚇','🚈','🚉','🚊','🚝','🚞','🚋','🚍','🚎','🚐','🚑','🚒','🚓','🚔','🚖','🚘','🚍','🛺','🏍️','🛵','🚲','🛴','🛹','🛼','🚏','🛣️','🛤️','⛽','🚧','🚦','🚥','🛑','🚨'],
-  '🏗️ Construction': ['🏗️','🧱','🪵','🪨','🔩','🪛','🔨','⛏️','🪚','🔧','🗜️','⚙️','🪤','🧰','🪝','🪜','🪣','🧲','📐','📏','✂️','🗡️','🔑','🗝️','🚪','🪞','🪟','🛏️','🛋️','🚿','🛁','🪠','🪥','🧹','🧺','🧻','🪣','🧴','🧷','🧹','🪣','🏠','🏡','🏢','🏣','🏤','🏥','🏦','🏧','🏨','🏩','🏪','🏫','🏬','🏭','🏯','🏰','💒','🗼','🗽','⛪','🕌','🕍','⛩️','🕋','⛲','⛺','🏕️','🏖️','🏗️','🏘️','🏙️','🏚️'],
-  '📡 Électronique': ['📡','📻','📺','💻','🖥️','🖨️','⌨️','🖱️','💾','💿','📀','📱','☎️','📞','📟','📠','🔋','🪫','🔌','💡','🔦','🕯️','🪔','🧯','🔭','🔬','📷','📸','📹','🎥','📽️','🎞️','📞','📟','📠','📺','📻','🎙️','🎚️','🎛️','🧭','⏱️','⏲️','⏰','🕰️','⌚','📡','🛰️','🚀','🛸','🔭','🪬','🧲','⚡','🔋','💡','🔆','🔅','📶','🛜','📲','💬','📳','📴','📵','📶','📳'],
-  '🎯 Munitions': ['🎯','💫','⭐','🌟','✨','💥','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🔘','🟥','🟧','🟨','🟩','🟦','🟪','🟫','⬛','⬜','🔺','🔻','🔷','🔶','🔹','🔸','🔲','🔳','▪️','▫️','◾','◽','◼️','◻️','🗯️','💭','💬','🔔','🔕','🎵','🎶','🎼','🎹','🥁','🪘','🎷','🎺','🎸','🪕','🎻','🪗'],
-  '⚙️ Ressources': ['⚙️','🔧','🔩','🪛','🔨','🪚','⛏️','🪝','🪜','🧰','🪤','💡','🔋','🪫','🪵','🧱','⛏️','🪨','🏗️','🔑','🗝️','🌲','🌳','🌿','🍄','🌾','🪨','🔥','❄️','💎','🪙','💰','💵','💴','💶','💷','💸','💳','🪙','🏺','🗿','🧿','🪬','📿','💍','🔮','🧲','⚡','🌊','💧','🫧','🌀','🌈','⛅','🌤️','🌥️','🌦️','🌧️','⛈️','🌩️','🌨️','🌪️','🌫️','🌬️','🌀'],
-  '🌿 Nature': ['🌲','🌳','🌴','🌵','🎋','🎍','🍀','☘️','🌿','🍃','🍂','🍁','🌾','🌺','🌸','🌼','🌻','🌹','🥀','🌷','💐','🍄','🌰','🦔','🦡','🦦','🦫','🐺','🦊','🐗','🦌','🐦','🦅','🦆','🦉','🦇','🐝','🐛','🦋','🐌','🐞','🐜','🦟','🦗','🕷️','🦂','🐢','🐍','🦎','🦖','🦕','🐊','🐸','🐲','🐉','☀️','🌙','⭐','🌟','💫','✨','⚡','❄️','🔥','💧','🌊','🌈','⛅','🌤️','🌥️','🌦️','🌧️','⛈️','🌩️','🌨️','🌪️','🌫️'],
-  '💀 DayZ': ['💀','☠️','🧟','🧟‍♂️','🧟‍♀️','👻','👾','👽','🤖','🎃','🩸','🪦','⚰️','⚱️','🗡️','☢️','☣️','⚠️','🚨','🚫','⛔','🔞','📵','🚷','🚯','🚳','🚱','📛','🔕','🔇','💢','💯','‼️','⁉️','❓','❗','🆘','🆖','🆗','🆙','🆕','🆓','🆒','🅰️','🅱️','🆎','🆑','🅾️','🆔','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🏴','🏳️','🚩','🏴‍☠️','🎌','🏁'],
-  '😀 Visages': ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','🫠','😉','😊','😇','🥰','😍','🤩','😘','😗','☺️','😚','😙','🥲','😋','😛','😜','🤪','😝','🤑','🤗','🤭','🫢','🫣','🤫','🤔','🫡','🤐','🤨','😐','😑','😶','🫥','😏','😒','🙄','😬','🤥','🫨','😌','😔','😪','🤤','😴','😷','🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','💫','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','🫤','😟','🙁','☹️','😮','😯','😲','😳','🥺','🥹','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺','👻','👽','👾','🤖'],
-};
-
-let selectedEmoji = '';
-let currentEpCat = Object.keys(EMOJI_DATA)[0];
-let pickerOpen = false;
-let allEmojis = [...new Set(Object.values(EMOJI_DATA).flat())];
-
-function buildPicker() {
-  const catsEl = document.getElementById('epCats');
-  Object.keys(EMOJI_DATA).forEach((cat, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'ep-cat' + (i === 0 ? ' active' : '');
-    btn.textContent = cat;
-    btn.onclick = () => {
-      document.querySelectorAll('.ep-cat').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentEpCat = cat;
-      document.getElementById('epSearch').value = '';
-      renderGrid(EMOJI_DATA[cat]);
-    };
-    catsEl.appendChild(btn);
-  });
-  renderGrid(EMOJI_DATA[currentEpCat]);
-}
-
-function renderGrid(emojis) {
-  const grid = document.getElementById('epGrid');
-  const count = document.getElementById('epCount');
-  if (!emojis.length) {
-    grid.innerHTML = '<div class="ep-empty">// AUCUN RÉSULTAT //</div>';
-    count.textContent = '';
-    return;
-  }
-  grid.innerHTML = emojis.map(e => `<button class="ep-btn" onclick="selectEmoji('${e}')">${e}</button>`).join('');
-  count.textContent = emojis.length + ' emojis';
-}
-
-function filterEmoji() {
-  const q = document.getElementById('epSearch').value.toLowerCase().trim();
-  if (!q) { renderGrid(EMOJI_DATA[currentEpCat]); return; }
-  renderGrid([...new Set(allEmojis)].filter(e => {
-    try { return e.toLowerCase().includes(q); } catch(x) { return false; }
-  }));
-}
-
-function selectEmoji(e) {
-  selectedEmoji = e;
-  const el = document.getElementById('epSelected');
-  el.textContent = e;
-  el.classList.remove('placeholder');
-  closePicker();
-}
-
-function togglePicker() {
-  pickerOpen = !pickerOpen;
-  document.getElementById('epPicker').classList.toggle('open', pickerOpen);
-  if (pickerOpen) setTimeout(() => document.getElementById('epSearch').focus(), 50);
-}
-
-function closePicker() {
-  pickerOpen = false;
-  document.getElementById('epPicker').classList.remove('open');
-}
-
-document.addEventListener('click', e => {
-  if (!document.getElementById('epWrap').contains(e.target)) closePicker();
-});
-
-buildPicker();
+const SHEET_ID = '1yzqSa8aOkxnB2uZ9YLAdiNs7LZYOnInV7ASZbVgyivo';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 const CATS={armes:'⚔ Armes',munitions:'🎯 Munitions',nourriture:'🍖 Nourriture',medical:'💊 Médical',vetements:'🎒 Équipement',vehicules:'🚗 Véhicules',construction:'🏗 Construction',electronique:'📡 Électronique',ressources:'⚙ Ressources'};
-const SK='mag_v3_items';
-let filt='all',adminOpen=false,nid=200,collapsed={};
+let filt='all', ITEMS=[], collapsed={};
 
-const DEF=[
-  {id:1,cat:'armes',icon:'🔫',name:'AKM',desc:'Fusil d\'assaut 7.62mm',price:45,rar:'uncommon'},
-  {id:2,cat:'armes',icon:'🔫',name:'M4A1',desc:'Fusil d\'assaut 5.56mm',price:62,rar:'uncommon'},
-  {id:3,cat:'armes',icon:'🎯',name:'SVD Dragunov',desc:'Fusil de précision 7.62mm',price:120,rar:'rare'},
-  {id:4,cat:'armes',icon:'💥',name:'FNX45',desc:'Pistolet .45 ACP',price:22,rar:'common'},
-  {id:5,cat:'armes',icon:'💣',name:'Grenade M67',desc:'Grenade à fragmentation',price:28,rar:'uncommon'},
-  {id:6,cat:'armes',icon:'🏹',name:'Arbalète',desc:'Silencieuse & redoutable',price:18,rar:'common'},
-  {id:7,cat:'munitions',icon:'🎯',name:'Balles 7.62x39',desc:'Pour AKM / SKS',price:3,rar:'common'},
-  {id:8,cat:'munitions',icon:'🎯',name:'Balles 5.56x45',desc:'Pour M4A1 / CR-527',price:3,rar:'common'},
-  {id:9,cat:'munitions',icon:'🎯',name:'Balles .308 Win',desc:'Pour Mosin / SVD',price:5,rar:'uncommon'},
-  {id:10,cat:'nourriture',icon:'🥫',name:'Conserve de haricots',desc:'Nourriture en boîte',price:1,rar:'common'},
-  {id:11,cat:'nourriture',icon:'🥩',name:'Steak de cerf',desc:'Viande cuite',price:2,rar:'common'},
-  {id:12,cat:'nourriture',icon:'💧',name:'Bouteille d\'eau 1L',desc:'Eau potable',price:1,rar:'common'},
-  {id:13,cat:'medical',icon:'💉',name:'EpiPen',desc:'Choc anaphylactique',price:35,rar:'rare'},
-  {id:14,cat:'medical',icon:'🩹',name:'Kit de suture',desc:'Referme les coupures',price:8,rar:'uncommon'},
-  {id:15,cat:'medical',icon:'💊',name:'Tétracycline',desc:'Antibiotique',price:12,rar:'uncommon'},
-  {id:16,cat:'medical',icon:'🩺',name:'Défibrillateur',desc:'Réanimation cardiaque',price:85,rar:'rare'},
-  {id:17,cat:'medical',icon:'🩹',name:'Bandage',desc:'Arrête les saignements',price:2,rar:'common'},
-  {id:18,cat:'vetements',icon:'🎒',name:'Sac ALICE 65L',desc:'Sac à dos militaire',price:28,rar:'uncommon'},
-  {id:19,cat:'vetements',icon:'⛑️',name:'Casque MICH 2000',desc:'Casque balistique',price:24,rar:'uncommon'},
-  {id:20,cat:'vetements',icon:'🥾',name:'Bottes militaires',desc:'Résistantes & silencieuses',price:9,rar:'common'},
-  {id:21,cat:'vehicules',icon:'🚗',name:'Olga 24',desc:'Berline civile réparée',price:250,rar:'rare'},
-  {id:22,cat:'vehicules',icon:'🚁',name:'Hélicoptère (mod)',desc:'Transport aérien',price:850,rar:'rare'},
-  {id:23,cat:'construction',icon:'🧱',name:'Mur en bois',desc:'Base building',price:5,rar:'common'},
-  {id:24,cat:'construction',icon:'🪵',name:'Planche de bois',desc:'Matériau de construction',price:1,rar:'common'},
-  {id:25,cat:'electronique',icon:'📻',name:'Walkie-talkie',desc:'Communication radio',price:18,rar:'uncommon'},
-  {id:26,cat:'electronique',icon:'🔋',name:'Batterie 9V',desc:'Pour radio & lampes',price:3,rar:'common'},
-  {id:27,cat:'ressources',icon:'⚙️',name:'Pièces moteur',desc:'Composant mécanique',price:6,rar:'uncommon'},
-  {id:28,cat:'ressources',icon:'⛽',name:'Jerrican essence',desc:'Carburant 20L',price:12,rar:'uncommon'},
-];
-
-function load(){try{const r=localStorage.getItem(SK);if(r){const d=JSON.parse(r);nid=d.nid||200;return d.items;}}catch(e){}return JSON.parse(JSON.stringify(DEF));}
-function save(){try{const date=new Date().toLocaleDateString('fr-FR');localStorage.setItem(SK,JSON.stringify({items:ITEMS,nid,date}));document.getElementById('s-date').textContent=date;}catch(e){}}
-function getDate(){try{const r=localStorage.getItem(SK);if(r)return JSON.parse(r).date||'—';}catch(e){}return '—';}
-let ITEMS=load();
-document.getElementById('s-date').textContent=getDate();
-
-function toast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(ok?'ok':'err')+' show';clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2400);}
+function toast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(ok?'ok':'err')+' show';clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2800);}
 function setF(f,btn){filt=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render();}
-function toggleA(){adminOpen=!adminOpen;document.getElementById('apanel').classList.toggle('open',adminOpen);document.getElementById('atgl').classList.toggle('on',adminOpen);}
 function toggleCat(cat){collapsed[cat]=!collapsed[cat];render();}
 
-function addItem(){
-  const icon=selectedEmoji||'📦';
-  const name=document.getElementById('fn').value.trim();
-  const desc=document.getElementById('fd').value.trim();
-  const price=parseFloat(document.getElementById('fp').value)||0;
-  const cat=document.getElementById('fc').value;
-  const rar=document.getElementById('fr').value;
-  if(!name){toast('// NOM REQUIS //',false);document.getElementById('fn').focus();return;}
-  if(!price){toast('// PRIX REQUIS //',false);document.getElementById('fp').focus();return;}
-  ITEMS.push({id:nid++,cat,icon,name,desc,price,rar});
-  save();
-  ['fn','fd','fp'].forEach(id=>document.getElementById(id).value='');
-  selectedEmoji='';
-  const el=document.getElementById('epSelected');el.textContent='Choisir';el.classList.add('placeholder');
-  document.getElementById('fn').focus();
-  toast('✓ '+name+' ajouté');render();
-}
+async function loadData(manual=false){
+  const btn=document.getElementById('refreshBtn');
+  const icon=document.getElementById('refreshIcon');
+  btn.classList.add('spin');
 
-function delItem(id){
-  const it=ITEMS.find(i=>i.id===id);if(!it)return;
-  if(!confirm('Supprimer "'+it.name+'" ?'))return;
-  ITEMS=ITEMS.filter(i=>i.id!==id);save();toast('✕ '+it.name+' supprimé',false);render();
+  try{
+    const res = await fetch(SHEET_URL+'&t='+Date.now());
+    const text = await res.text();
+    const json = JSON.parse(text.substr(47).slice(0,-2));
+    const rows = json.table.rows;
+    const cols = json.table.cols.map(c=>c.label.toLowerCase().trim());
+
+    ITEMS = rows.map((row,i)=>{
+      const get=(col)=>{
+        const idx=cols.indexOf(col);
+        if(idx===-1)return '';
+        const cell=row.c[idx];
+        return cell&&cell.v!==null?String(cell.v).trim():'';
+      };
+      return {
+        id: i,
+        icon: get('icon')||'📦',
+        name: get('name')||'Item sans nom',
+        desc: get('desc')||'',
+        price: parseFloat(get('price'))||0,
+        cat: get('cat')||'ressources',
+        rar: get('rar')||'common',
+      };
+    }).filter(i=>i.name&&i.name!=='Item sans nom'&&i.price>0);
+
+    const now = new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('lastSync').textContent = 'mis à jour à '+now;
+    document.getElementById('s-date').textContent = new Date().toLocaleDateString('fr-FR');
+    if(manual) toast('✓ Données actualisées — '+ITEMS.length+' items');
+    render();
+  } catch(e){
+    document.getElementById('content').innerHTML=`<div class="error">
+      <i class="ti ti-alert-circle" style="font-size:32px;display:block;margin-bottom:12px;color:#cc4040"></i>
+      // IMPOSSIBLE DE LIRE LE GOOGLE SHEET //<br><br>
+      Vérifie que le Sheet est bien partagé en "Lecture seule pour tout le monde"<br>
+      et que les colonnes s'appellent : icon · name · desc · price · cat · rar
+    </div>`;
+    if(manual) toast('// Erreur de connexion au Sheet //',false);
+  }
+  btn.classList.remove('spin');
 }
-function exportJ(){
-  const blob=new Blob([JSON.stringify({items:ITEMS,nid,exported:new Date().toISOString()},null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mag_prices_'+new Date().toISOString().slice(0,10)+'.json';a.click();
-  toast('💾 Export téléchargé');
-}
-function importJ(e){
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(!Array.isArray(d.items))throw 0;if(!confirm('Importer '+d.items.length+' items ?'))return;ITEMS=d.items;nid=d.nid||200;save();toast('✓ Import réussi — '+ITEMS.length+' items');render();}catch(err){toast('// FICHIER INVALIDE //',false);}};
-  r.readAsText(f);e.target.value='';
-}
-function resetD(){if(!confirm('Réinitialiser avec les items par défaut ?'))return;ITEMS=JSON.parse(JSON.stringify(DEF));nid=200;save();toast('Reset ok');render();}
 
 function fmtPrice(p){
   if(p>=1000)return (p/1000).toFixed(p%1000===0?0:1)+'k €';
@@ -389,6 +204,7 @@ function render(){
   const prices=filtered.map(i=>i.price);
   document.getElementById('s-min').textContent=prices.length?fmtPrice(Math.min(...prices)):'—';
   document.getElementById('s-max').textContent=prices.length?fmtPrice(Math.max(...prices)):'—';
+
   const catOrder=Object.keys(CATS);
   let html='';
   catOrder.forEach(cat=>{
@@ -405,28 +221,28 @@ function render(){
         <th style="width:42px"></th><th>Item</th>
         <th class="hide-mobile" style="width:115px">Rareté</th>
         <th class="price-col" style="width:120px">Prix</th>
-        <th style="width:36px"></th>
       </tr></thead><tbody>`;
       rows.sort((a,b)=>b.price-a.price).forEach(item=>{
         const pc=item.rar==='rare'?'p-rare':item.rar==='uncommon'?'p-uncommon':'';
         const rb=item.rar==='rare'?'rar-rare':item.rar==='uncommon'?'rar-uncommon':'rar-common';
         const rl=item.rar==='rare'?'Rare':item.rar==='uncommon'?'Peu commun':'Commun';
         html+=`<tr>
-          <td class="td-icon">${item.icon||'📦'}</td>
-          <td><div class="td-name">${item.name}</div><div class="td-desc">${item.desc||''}</div></td>
+          <td class="td-icon">${item.icon}</td>
+          <td><div class="td-name">${item.name}</div><div class="td-desc">${item.desc}</div></td>
           <td class="td-rar hide-mobile"><span class="rar-badge ${rb}">${rl}</span></td>
           <td class="td-price"><span class="price-num ${pc}">${fmtPrice(item.price)}</span></td>
-          <td class="td-del"><button class="delbtn" onclick="delItem(${item.id})" title="Supprimer"><i class="ti ti-x" aria-hidden="true"></i></button></td>
         </tr>`;
       });
       html+=`</tbody></table>`;
     }
     html+=`</div>`;
   });
-  if(!filtered.length)html='<div class="no-res">// AUCUN ITEM TROUVÉ //</div>';
+  if(!filtered.length&&ITEMS.length)html='<div class="no-res">// AUCUN ITEM TROUVÉ //</div>';
   document.getElementById('content').innerHTML=html;
 }
-render();
+
+loadData();
+setInterval(()=>loadData(),60000);
 
 const pc=document.getElementById('pc');
 const cx=pc.getContext('2d');
