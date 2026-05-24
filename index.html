@@ -27,6 +27,45 @@
   --b-unc:rgba(0,191,255,0.5);
   --b-com:rgba(0,255,65,0.35);
 }
+
+/* ── RGB ANIMATION (Extra Rare) ── */
+@keyframes rgbColor{
+  0%  {color:#ff0040;text-shadow:0 0 18px #ff0040,0 0 36px rgba(255,0,64,.3)}
+  14% {color:#ff6600;text-shadow:0 0 18px #ff6600,0 0 36px rgba(255,102,0,.3)}
+  28% {color:#ffee00;text-shadow:0 0 18px #ffee00,0 0 36px rgba(255,238,0,.3)}
+  42% {color:#00ff41;text-shadow:0 0 18px #00ff41,0 0 36px rgba(0,255,65,.3)}
+  57% {color:#00ccff;text-shadow:0 0 18px #00ccff,0 0 36px rgba(0,204,255,.3)}
+  71% {color:#aa44ff;text-shadow:0 0 18px #aa44ff,0 0 36px rgba(170,68,255,.3)}
+  85% {color:#ff00aa;text-shadow:0 0 18px #ff00aa,0 0 36px rgba(255,0,170,.3)}
+  100%{color:#ff0040;text-shadow:0 0 18px #ff0040,0 0 36px rgba(255,0,64,.3)}
+}
+@keyframes rgbBorder{
+  0%  {border-color:rgba(255,0,64,.7);box-shadow:0 0 25px rgba(255,0,64,.2),inset 0 0 20px rgba(255,0,64,.04)}
+  14% {border-color:rgba(255,102,0,.7);box-shadow:0 0 25px rgba(255,102,0,.2),inset 0 0 20px rgba(255,102,0,.04)}
+  28% {border-color:rgba(255,238,0,.7);box-shadow:0 0 25px rgba(255,238,0,.2),inset 0 0 20px rgba(255,238,0,.04)}
+  42% {border-color:rgba(0,255,65,.7);box-shadow:0 0 25px rgba(0,255,65,.2),inset 0 0 20px rgba(0,255,65,.04)}
+  57% {border-color:rgba(0,204,255,.7);box-shadow:0 0 25px rgba(0,204,255,.2),inset 0 0 20px rgba(0,204,255,.04)}
+  71% {border-color:rgba(170,68,255,.7);box-shadow:0 0 25px rgba(170,68,255,.2),inset 0 0 20px rgba(170,68,255,.04)}
+  85% {border-color:rgba(255,0,170,.7);box-shadow:0 0 25px rgba(255,0,170,.2),inset 0 0 20px rgba(255,0,170,.04)}
+  100%{border-color:rgba(255,0,64,.7);box-shadow:0 0 25px rgba(255,0,64,.2),inset 0 0 20px rgba(255,0,64,.04)}
+}
+@keyframes rgbBar{
+  0%  {background:linear-gradient(180deg,#ff0040,#cc0030)}
+  14% {background:linear-gradient(180deg,#ff6600,#cc5200)}
+  28% {background:linear-gradient(180deg,#ffee00,#ccbe00)}
+  42% {background:linear-gradient(180deg,#00ff41,#00cc33)}
+  57% {background:linear-gradient(180deg,#00ccff,#0099cc)}
+  71% {background:linear-gradient(180deg,#aa44ff,#8833cc)}
+  85% {background:linear-gradient(180deg,#ff00aa,#cc0088)}
+  100%{background:linear-gradient(180deg,#ff0040,#cc0030)}
+}
+@keyframes rgbBadge{
+  0%  {color:#ff0040;border-color:rgba(255,0,64,.5);background:rgba(255,0,64,.08)}
+  28% {color:#ffee00;border-color:rgba(255,238,0,.5);background:rgba(255,238,0,.08)}
+  57% {color:#00ccff;border-color:rgba(0,204,255,.5);background:rgba(0,204,255,.08)}
+  85% {color:#ff00aa;border-color:rgba(255,0,170,.5);background:rgba(255,0,170,.08)}
+  100%{color:#ff0040;border-color:rgba(255,0,64,.5);background:rgba(255,0,64,.08)}
+}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-weight:400;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::selection{background:rgba(0,255,65,.2)}
@@ -290,11 +329,14 @@ header{
 .ic.com::before{background:linear-gradient(180deg,var(--g),var(--g2))}
 .ic.unc::before{background:linear-gradient(180deg,var(--blue),#0088bb)}
 .ic.rar::before{background:linear-gradient(180deg,var(--purple),#8800cc)}
+.ic.xtr::before{animation:rgbBar 3s linear infinite}
 
 .ic:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.7)}
 .ic.com:hover{box-shadow:0 16px 48px rgba(0,0,0,.7),0 0 24px rgba(0,255,65,.08),inset 0 0 24px rgba(0,255,65,.02);border-color:rgba(0,255,65,.2)}
 .ic.unc:hover{box-shadow:0 16px 48px rgba(0,0,0,.7),0 0 24px rgba(0,191,255,.1),inset 0 0 24px rgba(0,191,255,.03);border-color:rgba(0,191,255,.25)}
 .ic.rar:hover{box-shadow:0 16px 48px rgba(0,0,0,.7),0 0 30px rgba(204,68,255,.15),inset 0 0 24px rgba(204,68,255,.04);border-color:rgba(204,68,255,.35)}
+.ic.xtr{animation:rgbBorder 3s linear infinite}
+.ic.xtr:hover{transform:translateY(-4px)}
 
 /* Rare shimmer */
 .ic.rar::after{
@@ -345,6 +387,7 @@ header{
 .rb.com{background:rgba(0,50,15,.6);border:1px solid rgba(0,255,65,.25);color:var(--g)}
 .rb.unc{background:rgba(0,30,60,.6);border:1px solid rgba(0,191,255,.3);color:var(--blue)}
 .rb.rar{background:rgba(50,0,70,.6);border:1px solid rgba(204,68,255,.3);color:var(--purple)}
+.rb.xtr{font-size:8px;letter-spacing:2px;padding:4px 8px;animation:rgbBadge 3s linear infinite;font-weight:700}
 
 /* ── PRICES ── */
 .cp{display:grid;grid-template-columns:1fr 1fr}
@@ -361,16 +404,16 @@ header{
   font-family:'Bebas Neue',sans-serif;font-size:28px;
   letter-spacing:1px;line-height:1;
 }
+/* Price Sell Trader — toujours jaune/or */
 .pv.trader{
-  color:var(--g);
-  text-shadow:0 0 15px rgba(0,255,65,.25),1px 1px 0 #003310,2px 2px 0 #001a08;
-}
-.pv.pp{
   color:var(--gold);
-  text-shadow:0 0 15px rgba(255,204,0,.2),1px 1px 0 #332200,2px 2px 0 #1a1100;
+  text-shadow:0 0 15px rgba(255,204,0,.25),1px 1px 0 #332200,2px 2px 0 #1a1100;
 }
-.pv.unc-c{color:var(--blue);text-shadow:0 0 12px rgba(0,191,255,.2)}
-.pv.rar-c{color:var(--purple);text-shadow:0 0 15px rgba(204,68,255,.25)}
+/* Joueur du coin — couleur selon rareté */
+.pv.pp-com{color:var(--g);text-shadow:0 0 15px rgba(0,255,65,.25),1px 1px 0 #003310}
+.pv.pp-unc{color:var(--blue);text-shadow:0 0 15px rgba(0,191,255,.25),1px 1px 0 #002233}
+.pv.pp-rar{color:var(--purple);text-shadow:0 0 15px rgba(204,68,255,.3),1px 1px 0 #220033}
+.pv.pp-xtr{animation:rgbColor 3s linear infinite;font-size:26px}
 .pv.na{color:rgba(184,216,152,.15);font-size:20px}
 .psub{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(184,216,152,.2);margin-top:3px;letter-spacing:.5px}
 
@@ -485,7 +528,8 @@ footer span{color:rgba(0,255,65,.45)}
   <div class="li"><div class="ld" style="background:var(--g)"></div>Commun</div>
   <div class="li"><div class="ld" style="background:var(--blue)"></div>Peu commun</div>
   <div class="li"><div class="ld" style="background:var(--purple)"></div>Rare</div>
-  <div style="margin-left:auto;font-size:9px;letter-spacing:1px;color:rgba(0,255,65,.15);font-family:'Share Tech Mono',monospace">// Colonnes sheet : icone · name · desc · price · price_pp · cat · rar</div>
+  <div class="li"><div class="ld" style="background:linear-gradient(135deg,#ff0040,#ffee00,#00ff41,#00ccff,#aa44ff);animation:rgbBar 3s linear infinite"></div><span style="animation:rgbColor 3s linear infinite;font-family:'Share Tech Mono',monospace">Extra Rare</span></div>
+  <div style="margin-left:auto;font-size:9px;letter-spacing:1px;color:rgba(0,255,65,.15);font-family:'Share Tech Mono',monospace">// rar: common · uncommon · rare · extra_rare</div>
 </div>
 
 <!-- CONTENT -->
@@ -577,7 +621,7 @@ async function load(manual=false){
 function render(){
   const q=document.getElementById('srch').value.toLowerCase();
   const so=document.getElementById('ss').value;
-  const ro={common:0,uncommon:1,rare:2};
+  const ro={common:0,uncommon:1,rare:2,extra_rare:3};
 
   let list=ITEMS.filter(i=>{
     const mc=filt==='all'||i.cat===filt;
@@ -617,13 +661,18 @@ function render(){
     if(!isC){
       html+=`<div class="cg ${vm==='l'?'lv':''}">`;
       rows.forEach(item=>{
-        const r=item.rar==='rare'?'rar':item.rar==='uncommon'?'unc':'com';
-        const rl=r==='rar'?'Rare':r==='unc'?'Peu commun':'Commun';
-        const pc=r==='rar'?'rar-c':r==='unc'?'unc-c':'';
+        const raw=item.rar||'common';
+        const r=raw==='extra_rare'?'xtr':raw==='rare'?'rar':raw==='uncommon'?'unc':'com';
+        const rl=r==='xtr'?'✦ EXTRA RARE':r==='rar'?'Rare':r==='unc'?'Peu commun':'Commun';
+        const ppCls=r==='xtr'?'pp-xtr':r==='rar'?'pp-rar':r==='unc'?'pp-unc':'pp-com';
         const mp=fmt(item.price),pp=fmt(item.price_pp);
+        // Support image URL dans icone
+        const iconHtml=item.icon&&(item.icon.startsWith('http')||item.icon.startsWith('data:'))
+          ?`<img src="${item.icon}" style="width:38px;height:38px;object-fit:cover;border-radius:2px;" onerror="this.outerHTML='📦'"/>`
+          :item.icon;
         html+=`<div class="ic ${r}">
           <div class="ct">
-            <div class="ci">${item.icon}</div>
+            <div class="ci">${iconHtml}</div>
             <div class="cinfo">
               <div class="cname">${item.name}</div>
               ${item.desc?`<div class="cdesc">${item.desc}</div>`:''}
@@ -634,16 +683,16 @@ function render(){
             <div class="pb">
               <div class="pl trader">
                 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                Price Trader
+                Price Sell Trader
               </div>
-              ${mp?`<div class="pv trader ${pc}">${mp}</div><div class="psub">achat / vente shop</div>`:`<div class="pv na">N/A</div><div class="psub">non défini</div>`}
+              ${mp?`<div class="pv trader">${mp}</div><div class="psub">vente au trader officiel</div>`:`<div class="pv na">N/A</div><div class="psub">non disponible</div>`}
             </div>
             <div class="pb">
               <div class="pl pp">
                 <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 Joueur du coin
               </div>
-              ${pp?`<div class="pv pp">${pp}</div><div class="psub">échange player↔player</div>`:`<div class="pv na">N/A</div><div class="psub">non défini</div>`}
+              ${pp?`<div class="pv ${ppCls}">${pp}</div><div class="psub">échange player↔player</div>`:`<div class="pv na">N/A</div><div class="psub">non défini</div>`}
             </div>
           </div>
         </div>`;
